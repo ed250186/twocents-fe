@@ -3,6 +3,8 @@ import { Text, View, StyleSheet } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { HomeScreen } from './HomeScreen'
+import { MenuScreen } from './MenuScreen'
+
 
 const styles = StyleSheet.create({
   container: {
@@ -17,20 +19,9 @@ const styles = StyleSheet.create({
   }
 });
 
-
-class SettingsScreen extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.text}>Settings!</Text>
-      </View>
-    );
-  }
-}
-
 const TabNavigator = createBottomTabNavigator({
   Home: HomeScreen,
-  Settings: SettingsScreen,
+  Settings: MenuScreen,
 },
 {
   tabBarOptions: {
