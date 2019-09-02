@@ -1,11 +1,13 @@
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import { HomeScreen } from './HomeScreen'
-import { MenuScreen } from './MenuScreen'
+import { HomeScreen } from './HomeScreen';
+import { MenuScreen } from './MenuScreen';
+import { UserScreen } from './UserScreen';
 
 const TabNavigator = createBottomTabNavigator({
-  Home: HomeScreen,
   Menu: MenuScreen,
+  Home: HomeScreen,
+  User: UserScreen
 },
 {
   tabBarOptions: {
