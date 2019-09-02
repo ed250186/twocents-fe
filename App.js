@@ -1,10 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Sup</Text>
+      <Text style={styles.text}>I like turtles!</Text>
     </View>
   );
 }
@@ -12,8 +13,12 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#2C2540',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  text: {
+    color: '#EE933F',
+    fontSize: 30,
+  }
 });
