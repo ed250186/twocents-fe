@@ -39,6 +39,15 @@ class SettingsScreen extends React.Component {
 const TabNavigator = createBottomTabNavigator({
   Home: HomeScreen,
   Settings: SettingsScreen,
+},
+{
+  tabBarOptions: {
+    activeTintColor: '#EE933F',
+    inactiveTintColor: '#CCC0DD',
+    style: {
+      backgroundColor: '#2C2540'
+    }
+  }
 });
 
 export default createAppContainer(TabNavigator);
