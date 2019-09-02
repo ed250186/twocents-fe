@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { HomeScreen } from './HomeScreen'
 
 const styles = StyleSheet.create({
   container: {
@@ -16,15 +17,6 @@ const styles = StyleSheet.create({
   }
 });
 
-class HomeScreen extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.text}>Home!</Text>
-      </View>
-    );
-  }
-}
 
 class SettingsScreen extends React.Component {
   render() {
