@@ -5,20 +5,6 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { HomeScreen } from './HomeScreen'
 import { MenuScreen } from './MenuScreen'
 
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#2C2540',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    color: '#EE933F',
-    fontSize: 30,
-  }
-});
-
 const TabNavigator = createBottomTabNavigator({
   Home: HomeScreen,
   Settings: MenuScreen,
@@ -30,6 +16,19 @@ const TabNavigator = createBottomTabNavigator({
     style: {
       backgroundColor: '#2C2540'
     }
+  }
+});
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#2C2540',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  text: {
+    color: '#EE933F',
+    fontSize: 30,
   }
 });
 
