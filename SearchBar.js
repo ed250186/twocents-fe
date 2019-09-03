@@ -1,28 +1,33 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Text, View, StyleSheet, TextInput } from 'react-native';
 
-const SearchBar = (props) => {
-  const [enteredSearch, setSearch] = useState('');
-  // render() {
+class SearchBar extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state ={
+      input: ''
+    }
+  }
+  render() {
     const handleChange = enteredText => {
-      setSearch(enteredText)
+      this.setState({input: enteredText})
     }  
     const handleSubmit = () => {
-      console.log(enteredSearch)
-      setSearch('')
+      console.log(this.state.input)
+      this.setState({input: ''})
     }
     return (
       <View style={styles.container}>
         <TextInput 
           placeHolder='hey' 
           style={styles.input}
-          value={enteredSearch}
+          value={this.state.input}
           onChangeText={handleChange}
           onSubmitEditing={handleSubmit}
         />
       </View>
     );
-  // }
+  }
 }
 
 const styles = StyleSheet.create({
