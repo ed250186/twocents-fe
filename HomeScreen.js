@@ -1,12 +1,12 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import { SearchBar } from './SearchBar';
+import SearchBar from './SearchBar';
 
 export class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <SearchBar/>
+        <SearchBar />
         <Text style={styles.text}>Home!</Text>
       </View>
     );

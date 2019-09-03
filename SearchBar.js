@@ -1,14 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View, StyleSheet, TextInput } from 'react-native';
 
-export class SearchBar extends React.Component {
-  render() {
+const SearchBar = (props) => {
+  const [enteredSearch, setSearch] = useState('');
+  // render() {
+    const handleChange = enteredText => {
+      setSearch(enteredText)
+    }  
+    const handleSubmit = () => {
+      console.log(enteredSearch)
+      setSearch('')
+    }
     return (
       <View style={styles.container}>
-        <TextInput placeHolder='hey' style={styles.input}/>
+        <TextInput 
+          placeHolder='hey' 
+          style={styles.input}
+          value={enteredSearch}
+          onChangeText={handleChange}
+          onSubmitEditing={handleSubmit}
+        />
       </View>
     );
-  }
+  // }
 }
 
 const styles = StyleSheet.create({
@@ -25,3 +39,5 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   }
 });
+
+export default SearchBar;
