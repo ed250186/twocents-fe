@@ -19,7 +19,6 @@ class SearchBar extends React.Component {
     return (
       <View style={styles.container}>
         <TextInput 
-          placeHolder='hey' 
           style={styles.input}
           value={this.state.input}
           onChangeText={handleChange}
