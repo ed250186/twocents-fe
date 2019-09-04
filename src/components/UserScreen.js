@@ -5,18 +5,22 @@ export class UserScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image/>
-        <View style={styles.textBox}>
-          <Text style={styles.mainText}>Username</Text>
-          <Text style={styles.minorText}>name from global store</Text>
+        <View style={styles.imageBox}>
+          <Image style={styles.image}/>
         </View>
-        <View style={styles.textBox}>
-          <Text style={styles.mainText}>Email</Text>
-          <Text style={styles.minorText}>Email from global store</Text>
-        </View>
-        <View style={styles.textBox}>
-          <Text style={styles.mainText}>Recommendations</Text>
-          <Text style={styles.minorText}>from global store</Text>
+        <View style={styles.info}>
+          <View style={styles.textBox}>
+            <Text style={styles.mainText}>Username</Text>
+            <Text style={styles.minorText}>name from global store</Text>
+          </View>
+          <View style={styles.textBox}>
+            <Text style={styles.mainText}>Email</Text>
+            <Text style={styles.minorText}>Email from global store</Text>
+          </View>
+          <View style={styles.textBox}>
+            <Text style={styles.mainText}>Recommendations</Text>
+            <Text style={styles.minorText}>from global store</Text>
+          </View>
         </View>
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>Log Out</Text>
@@ -28,10 +32,15 @@ export class UserScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
+    paddingTop: '15%',
     flex: 1,
     backgroundColor: '#2C2540',
     alignItems: 'center',
-    justifyContent: 'center',
+  },
+  info: {
+    paddingTop: '10%',
+    height: '75%',
+    width: '100%'
   },
   textBox: {
     display: 'flex',
@@ -60,9 +69,20 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: '80%',
     alignItems: 'center',
+    shadowOffset:{  width: 5,  height: 10,  },
+    shadowColor: 'black',
+    shadowOpacity: 1.0,
   },
   image: {
-    height: 50,
-    width: 50,
+    height: 100,
+    width: 100,
+    borderWidth: 1,
+    borderColor: 'red'
+  },
+  imageBox: {
+    width: '80%',
+    height: '20%',
+    borderWidth: 1,
+    borderColor: 'green'
   }
 });
