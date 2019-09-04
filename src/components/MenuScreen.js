@@ -5,10 +5,10 @@ export class MenuScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.image}>
+        <View style={styles.imageBox}>
           <Image
             source={require("../images/twocents-logo.png")}
-            style={{ width: 300, height: 300 }}
+            style={{ width: 200, height: 200 }}
           />
         </View>
         <View style={styles.textBox}>
@@ -34,13 +34,14 @@ const styles = StyleSheet.create({
     marginBottom: 0,
     alignItems: 'center',
   },
-  image: {
+  imageBox: {
+    paddingTop: '5%',
     alignItems: 'center',
     height: '35%',
     width: '100%',
   },
   textBox: {
-    height: '60%',
+    height: '50%',
     width: '90%',
   },
   text: {
