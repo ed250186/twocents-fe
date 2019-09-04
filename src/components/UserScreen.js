@@ -6,20 +6,20 @@ export class UserScreen extends Component {
     return (
       <View style={styles.container}>
         <Image/>
-        <View>
+        <View style={styles.textBox}>
           <Text style={styles.mainText}>Username</Text>
           <Text style={styles.minorText}>name from global store</Text>
         </View>
-        <View>
+        <View style={styles.textBox}>
           <Text style={styles.mainText}>Email</Text>
           <Text style={styles.minorText}>Email from global store</Text>
         </View>
-        <View>
+        <View style={styles.textBox}>
           <Text style={styles.mainText}>Recommendations</Text>
           <Text style={styles.minorText}>from global store</Text>
         </View>
         <TouchableOpacity style={styles.button}>
-          <Text style={styles.minorText}>Log Out</Text>
+          <Text style={styles.buttonText}>Log Out</Text>
         </TouchableOpacity>
       </View>
     );
@@ -33,11 +33,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  textBox: {
+    display: 'flex',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    width: '90%',
+  },
   mainText: {
     color: '#EE933F',
     fontSize: 30,
   },
   minorText: {
+    color: '#CCC0DD',
+    fontSize: 25,
+    paddingLeft: 30,
+  },
+  buttonText: {
     color: '#CCC0DD',
     fontSize: 25,
   },
@@ -46,6 +57,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#EE933F',
     borderRadius: 10,
-    color: 'red',
   },
+  image: {
+    height: 50,
+    width: 50,
+  }
 });
