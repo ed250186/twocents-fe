@@ -37,7 +37,8 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    width: '90%',
+    width: '80%',
+    margin: 30,
   },
   mainText: {
     color: '#EE933F',
@@ -57,6 +58,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#EE933F',
     borderRadius: 10,
+    width: '80%',
+    alignItems: 'center',
   },
   image: {
     height: 50,
