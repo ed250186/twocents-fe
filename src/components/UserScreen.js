@@ -22,7 +22,7 @@ export class UserScreen extends Component {
             <Text style={styles.minorText}>from global store</Text>
           </View>
         </View>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} activeOpacity={.5} >
           <Text style={styles.buttonText}>Log Out</Text>
         </TouchableOpacity>
       </View>
