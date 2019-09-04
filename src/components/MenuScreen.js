@@ -13,10 +13,12 @@ export class MenuScreen extends Component {
         </View>
         <Text style={styles.text}>TwoCents</Text>
         <Text style={styles.about}>TwoCents is a cross pollination student project presented in Module 4 of Turing School of Software and Design</Text>
-        <View style={styles.allLinks}>
-          <Text style={styles.links}>Add Recommendation</Text>
-          <Text style={styles.links}>Notifications</Text>
-          <Text style={styles.links}>Contact</Text>
+        <Text style={styles.links}>Add Recommendation</Text>
+        <Text style={styles.links}>Notifications</Text>
+        <Text style={styles.links}>Contact</Text>
+        <View style={styles.yelp}>
+          <Text style={styles.yelpText}>Powered by</Text>
+          <Image source={require("../images/Yelp_trademark_RGB_outline.png")} style={{ width: 100, height: 40, marginTop: -15 }}/>
         </View>
       </View>
     );
@@ -51,5 +53,14 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     padding: 20,
     lineHeight: 10
+  },
+  yelpText: {
+    color: '#CCC0DD',
+    fontSize: 16
+  },
+  yelp: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignContent: 'center'
   }
 });
