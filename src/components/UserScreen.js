@@ -86,3 +86,5 @@ const styles = StyleSheet.create({
     borderColor: 'green'
   }
 });
+
+export default UserScreen;
