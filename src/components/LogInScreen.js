@@ -4,7 +4,6 @@ import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 export class LogInScreen extends Component {
   constructor() {
     super()
-
   }
 
   render() {
@@ -13,14 +12,14 @@ export class LogInScreen extends Component {
         <TouchableOpacity 
           style={styles.button} 
           activeOpacity={.5} 
-          onPress={() => this.props.handleLogin(true)}  
+          onPress={() => this.props.navigation.navigate( {routeName: 'Home'} )}  
         >
           <Text style={styles.buttonText}>Sign In</Text>
         </TouchableOpacity>
         <TouchableOpacity 
           style={styles.button} 
           activeOpacity={.5} 
-          onPress={() => this.props.handleLogin(true)}  
+          onPress={() => this.props.navigation.navigate( {routeName: 'Home'} )}  
         >
           <Text style={styles.buttonText}>Sign Up</Text>
         </TouchableOpacity>

@@ -26,9 +26,16 @@ export class LogOutPopup extends Component {
           <DialogFooter>
             <DialogButton 
               text='Cancel'
-              onPress={() => this.props.handlePopup(false)}
+              onPress={() => {
+                this.props.handlePopup(false)
+              }}
             ></DialogButton>
-            <DialogButton text='Log Out'></DialogButton>
+            <DialogButton 
+              text='Log Out'
+              onPress={() => {
+                this.props.handlePopup(false)
+                this.props.navigation.navigate( {routeName: 'LogIn'} )}}
+            ></DialogButton>
           </DialogFooter>
         } 
         >

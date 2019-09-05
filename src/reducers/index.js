@@ -1,4 +1,6 @@
 import { combineReducers } from 'redux';
+import { loggedInReducer } from './loggedInReducer';
+
 
 const test1 = () => {
   switch('') {
@@ -6,6 +8,8 @@ const test1 = () => {
       return('hello')
   }
 }
+
 export const rootReducer = combineReducers({
-  test: test1
+  test: test1,
+  loggedIn: loggedInReducer,
 })

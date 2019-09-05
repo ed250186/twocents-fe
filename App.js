@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from "react-navigation-stack";
 import { Provider } from 'react-redux';
 import  { createStore }  from 'redux';
+import { connect } from 'react-redux';
 import { Icon } from 'react-native-elements';
 import { rootReducer } from './src/reducers';
 import { HomeScreen } from './src/components/HomeScreen';
@@ -50,11 +51,11 @@ const TabNavigator = createBottomTabNavigator({
 });
 
 const Modal = createStackNavigator({
+  LogIn: LogInScreen,
   Tab: TabNavigator,
   User: UserScreen,
   Settings: SettingsScreen,
   About: AboutScreen,
-  // LogIn: LogInScreen,
 },
 {
   mode: 'modal',
@@ -86,8 +87,7 @@ export class App extends Component {
   render() {
     return(
       <Provider store={store}>
-        {this.state.LoggedIn && <Navigation/>}
-        {!this.state.LoggedIn && <LogInScreen handleLogin={this.handleLogin}/>}
+        <Navigation/>
       </Provider>
     )
   }

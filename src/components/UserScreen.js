@@ -60,6 +60,7 @@ export class UserScreen extends Component {
         <LogOutPopup 
           popupVisible={this.state.popupVisible}
           handlePopup={this.handlePopup}
+          navigation={this.props.navigation}
         />
       </View>
     );
