@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import SearchBar from './SearchBar';
+import { LogInScreen } from './LogInScreen';
 
 export class HomeScreen extends Component {
-
+  constructor(props) {
+    super(props)
+    this.state = {
+      LoggedIn: false,
+    }
+  }
   
   render() {
+    // if(!this.state.LoggedIn) {
+    //   this.props.navigation.navigate( {routeName: 'LogIn'} )
+    // }
     return (
       <View style={styles.container}>
         <Text style={styles.text}>Home!</Text>

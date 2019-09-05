@@ -54,7 +54,7 @@ const Modal = createStackNavigator({
   User: UserScreen,
   Settings: SettingsScreen,
   About: AboutScreen,
-  LogIn: LogInScreen,
+  // LogIn: LogInScreen,
 },
 {
   mode: 'modal',
@@ -72,10 +72,22 @@ const Modal = createStackNavigator({
 const Navigation = createAppContainer(Modal);
 
 export class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      LoggedIn: false,
+    }
+  }
+
+  handleLogin = (signedIn) => {
+    this.setState({LoggedIn: signedIn})
+  }
+
   render() {
     return(
       <Provider store={store}>
-        <Navigation/>
+        {this.state.LoggedIn && <Navigation/>}
+        {!this.state.LoggedIn && <LogInScreen handleLogin={this.handleLogin}/>}
       </Provider>
     )
   }

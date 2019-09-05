@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 
 export class LogInScreen extends Component {
@@ -13,14 +13,14 @@ export class LogInScreen extends Component {
         <TouchableOpacity 
           style={styles.button} 
           activeOpacity={.5} 
-          // onPress={}  
+          onPress={() => this.props.handleLogin(true)}  
         >
           <Text style={styles.buttonText}>Sign In</Text>
         </TouchableOpacity>
         <TouchableOpacity 
           style={styles.button} 
           activeOpacity={.5} 
-          // onPress={}  
+          onPress={() => this.props.handleLogin(true)}  
         >
           <Text style={styles.buttonText}>Sign Up</Text>
         </TouchableOpacity>
