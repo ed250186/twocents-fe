@@ -39,6 +39,7 @@ const Modal = createStackNavigator({
   defaultNavigationOptions: {
     
     headerStyle: {
+      height: 0,
         backgroundColor: '#2C2540',
         borderBottomWidth: 0,
     },
