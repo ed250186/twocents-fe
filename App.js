@@ -14,7 +14,7 @@ const store = createStore(rootReducer)
 const TabNavigator = createBottomTabNavigator({
   Home: HomeScreen,
   Search: SearchScreen,
-  Menu: Menu,
+  Menu: Menu
 },
 {
   tabBarOptions: {

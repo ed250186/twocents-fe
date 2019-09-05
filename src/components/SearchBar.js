@@ -36,11 +36,12 @@ const styles = StyleSheet.create({
     width: '100%'
   },
   input: {
-    color: '#EE933F',
+    color: '#FFF',
     backgroundColor: 'rgba(204, 192, 221, 0.4)',
-    width: '80%',
+    width: '84%',
     height: 30,
     borderRadius: 20,
+    padding: 10
   }
 });
 
