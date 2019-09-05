@@ -8,7 +8,6 @@ import { rootReducer } from './src/reducers';
 import { HomeScreen } from './src/components/HomeScreen';
 import { SearchScreen } from './src/components/SearchScreen';
 import { MenuScreen } from './src/components/MenuScreen';
-// import { MenuRouter } from './MenuRouter';
 import { UserScreen } from "./src/components/UserScreen";
 
 
