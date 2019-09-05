@@ -8,7 +8,6 @@ export class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <SearchBar />
         <Text style={styles.text}>Home!</Text>
       </View>
     );
