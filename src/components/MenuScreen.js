@@ -20,7 +20,6 @@ export class MenuScreen extends Component {
             4 of Turing School of Software and Design
           </Text>
           <TouchableOpacity
-            style={styles.links}
             onPress={() => this.props.navigation.navigate( {routeName: 'User'} )}
           >
             <Text>My Profile</Text>
