@@ -25,7 +25,12 @@ export class MenuScreen extends Component {
           >
             <Text>My Profile</Text>
           </TouchableOpacity>
-          <Text style={styles.links}>Notifications</Text>
+          <TouchableOpacity
+            style={styles.links}
+            onPress={() => this.props.navigation.navigate( {routeName: 'Settings'} )}
+          >
+            <Text>Settings</Text>
+          </TouchableOpacity>
           <Text style={styles.links}>Contact</Text>
         </View>
         <View style={styles.yelp}>
