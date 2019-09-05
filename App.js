@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from "react-navigation-stack";
 import { Provider } from 'react-redux';
 import  { createStore }  from 'redux';
+import { Icon } from 'react-native-elements';
 import { rootReducer } from './src/reducers';
 import { HomeScreen } from './src/components/HomeScreen';
 import { SearchScreen } from './src/components/SearchScreen';
@@ -15,9 +16,27 @@ import { AboutScreen } from './src/components/AboutScreen'
 const store = createStore(rootReducer)
 
 const TabNavigator = createBottomTabNavigator({
-  Home: HomeScreen,
-  Search: SearchScreen,
-  Menu: MenuScreen,
+  Home: {
+    screen: HomeScreen,
+    navigationOptions: {
+      tabBarLabel: 'My TwoCents',
+      tabBarIcon: ({ tintColor }) => <Icon name="home" size={35} color={tintColor} />
+    }
+  },
+  Search: {
+    screen: SearchScreen,
+    navigationOptions: {
+      tabBarLabel: 'Search',
+      tabBarIcon: ({ tintColor }) => <Icon name="search" size={35} color={tintColor} />
+    }
+  },
+  Menu: {
+    screen: MenuScreen,
+    navigationOptions: {
+      tabBarLabel: 'Menu',
+      tabBarIcon: ({ tintColor }) => <Icon name="menu" size={35} color={tintColor} />
+    }
+  },
 },
 {
   tabBarOptions: {
