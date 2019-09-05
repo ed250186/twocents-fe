@@ -11,7 +11,8 @@ import { SearchScreen } from './src/components/SearchScreen';
 import { MenuScreen } from './src/components/MenuScreen';
 import { UserScreen } from "./src/components/UserScreen";
 import { SettingsScreen } from './src/components/SettingsScreen';
-import { AboutScreen } from './src/components/AboutScreen'
+import { AboutScreen } from './src/components/AboutScreen';
+import { LogInScreen } from './src/components/LogInScreen';
 
 const store = createStore(rootReducer)
 
@@ -53,6 +54,7 @@ const Modal = createStackNavigator({
   User: UserScreen,
   Settings: SettingsScreen,
   About: AboutScreen,
+  LogIn: LogInScreen,
 },
 {
   mode: 'modal',

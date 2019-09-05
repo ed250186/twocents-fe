@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import SearchBar from './SearchBar';
 
-export class HomeScreen extends React.Component {
+export class HomeScreen extends Component {
 
   
   render() {
