@@ -3,6 +3,13 @@ import { Text, View, StyleSheet } from 'react-native';
 import SearchBar from './SearchBar';
 
 export class HomeScreen extends React.Component {
+
+  static navigationOptions = {
+    title: 'Chat',
+    headerStyle:{ backgroundColor: 'red'},
+    headerTitleStyle:{ color: 'green'},
+    }
+  
   render() {
     return (
       <View style={styles.container}>

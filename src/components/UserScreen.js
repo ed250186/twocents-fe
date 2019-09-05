@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, Image, TouchableOpacity, Button } from 'react-native';
 
 export class UserScreen extends Component {
+
+  static navigationOptions = ({ navigation }) => {
+      return {
+        title: 'User',
+        headerStyle: {
+          backgroundColor: 'white',
+        },
+      };
+    };
+
   render() {
     return (
       <View style={styles.container}>

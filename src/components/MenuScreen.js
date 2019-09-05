@@ -1,8 +1,36 @@
 import React, { Component } from "react";
-import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { Text, View, StyleSheet, Image, TouchableOpacity, Button} from "react-native";
 
 
 export class MenuScreen extends Component {
+  // static navigationOptions = ({ navigation }) => {
+  //   const params = navigation.state.params || {};
+
+  //   return {
+  //     // headerTitle: <LogoTitle />,
+  //     headerLeft: (
+  //       <Button
+  //         onPress={() => this.props.navigation.goBack()}
+  //         title="User"
+  //         color="black"
+  //       />
+  //     ),
+  //     headerRight: (
+  //       <Button onPress={params.increaseCount} title="+1" color="black" />
+  //     ),
+  //   };
+  // };
+  static navigationOptions = {
+    title: 'Home',
+    headerStyle: {
+      backgroundColor: '#f4511e',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+  };
+
   render() {
     return (
       <View style={styles.container}>
