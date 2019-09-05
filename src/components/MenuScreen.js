@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, StyleSheet, Image, TouchableOpacity, Button} from "react-native";
+import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 
 
 export class MenuScreen extends Component {
@@ -7,18 +7,18 @@ export class MenuScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.imageBox}>
+        {/* <View style={styles.imageBox}>
           <Image
             source={require("../images/twocents-logo.png")}
             style={{ width: 200, height: 200 }}
           />
-        </View>
+        </View> */}
         <View style={styles.textBox}>
-          <Text style={styles.text}>TwoCents</Text>
+          {/* <Text style={styles.text}>TwoCents</Text>
           <Text style={styles.about}>
             TwoCents is a cross pollination student project presented in Module
             4 of Turing School of Software and Design
-          </Text>
+          </Text> */}
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate( {routeName: 'User'} )}
           >

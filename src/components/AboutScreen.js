@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, Image } from 'react-native';
 
 export class AboutScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -14,7 +14,17 @@ export class AboutScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>About!</Text>
+        <View style={styles.imageBox}>
+          <Image
+            source={require("../images/twocents-logo.png")}
+            style={{ width: 200, height: 200 }}
+          />
+        </View>
+        <Text style={styles.text}>TwoCents</Text>
+          <Text style={styles.about}>
+            TwoCents is a cross pollination student project presented in Module
+            4 of Turing School of Software and Design
+          </Text>
       </View>
     );
   }
@@ -30,5 +40,19 @@ const styles = StyleSheet.create({
   text: {
     color: '#EE933F',
     fontSize: 30,
-  }
+  },
+  imageBox: {
+    paddingTop: "5%",
+    alignItems: "center",
+    height: "35%",
+    width: "100%"
+  },
+  about: {
+    color: "#CCC0DD",
+    fontSize: 24,
+    textAlign: "justify",
+    paddingTop: 20,
+    paddingBottom: 50,
+    lineHeight: 0
+  },
 });

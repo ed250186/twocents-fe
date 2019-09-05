@@ -5,7 +5,7 @@ export class UserScreen extends Component {
 
   static navigationOptions = ({ navigation }) => {
       return {
-        title: 'User',
+        title: 'My Profile',
         headerStyle: {
           backgroundColor: 'white',
         },
