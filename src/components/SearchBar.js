@@ -33,15 +33,14 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'space-around',
     alignItems: 'center',
-    width: '100%'
+    backgroundColor: 'rgba(204, 192, 221, 0.4)',
+    height: 35,
+    width: '84%',
+    borderRadius: 20,
   },
   input: {
+    width: '90%',
     color: '#FFF',
-    backgroundColor: 'rgba(204, 192, 221, 0.4)',
-    width: '84%',
-    height: 30,
-    borderRadius: 20,
-    padding: 10
   }
 });
 
