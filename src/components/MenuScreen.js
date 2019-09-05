@@ -13,7 +13,7 @@ export class MenuScreen extends Component {
             style={{ width: 200, height: 200 }}
           />
         </View> */}
-        <View style={styles.textBox}>
+        {/* <View style={styles.textBox}> */}
           {/* <Text style={styles.text}>TwoCents</Text>
           <Text style={styles.about}>
             TwoCents is a cross pollination student project presented in Module
@@ -25,18 +25,16 @@ export class MenuScreen extends Component {
             <Text style={styles.links}>My Profile</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.links}
             onPress={() => this.props.navigation.navigate( {routeName: 'Settings'} )}
           >
             <Text style={styles.links}>Settings</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.links}
             onPress={() => this.props.navigation.navigate( {routeName: 'About'} )}
           >
             <Text style={styles.links}>About</Text>
           </TouchableOpacity>
-        </View>
+        {/* </View> */}
         {/* <View style={styles.yelp}>
           <Text style={styles.yelpText}>Powered by</Text>
           <Image
@@ -53,10 +51,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#2C2540",
-    marginBottom: 0,
-    alignItems: "center",
+    padding: '5%',
     display: "flex",
-    justifyContent: "space-evenly"
   },
   imageBox: {
     paddingTop: "5%",
@@ -86,7 +82,7 @@ const styles = StyleSheet.create({
     textAlign: "left",
     paddingTop: 20,
     paddingBottom: 20,
-    lineHeight: 10
+    textDecorationLine: 'underline',
   },
   // yelpText: {
   //   color: "#CCC0DD",
