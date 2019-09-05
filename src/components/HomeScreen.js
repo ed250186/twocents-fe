@@ -3,6 +3,7 @@ import { Text, View, StyleSheet } from 'react-native';
 import SearchBar from './SearchBar';
 
 export class HomeScreen extends React.Component {
+
   
   render() {
     return (

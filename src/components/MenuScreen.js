@@ -37,13 +37,13 @@ export class MenuScreen extends Component {
             <Text style={styles.links}>About</Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.yelp}>
+        {/* <View style={styles.yelp}>
           <Text style={styles.yelpText}>Powered by</Text>
           <Image
             source={require("../images/Yelp_trademark_RGB_outline.png")}
             style={{ width: 100, height: 40, marginTop: -15 }}
           />
-        </View>
+        </View> */}
       </View>
     );
   }
@@ -88,14 +88,14 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     lineHeight: 10
   },
-  yelpText: {
-    color: "#CCC0DD",
-    fontSize: 16
-  },
-  yelp: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignContent: "center"
-  }
+  // yelpText: {
+  //   color: "#CCC0DD",
+  //   fontSize: 16
+  // },
+  // yelp: {
+  //   flexDirection: "row",
+  //   justifyContent: "center",
+  //   alignContent: "center"
+  // }
 });
 
