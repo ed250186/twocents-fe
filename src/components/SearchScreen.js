@@ -1,21 +1,36 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import SearchBar from './SearchBar';
 
 export class SearchScreen extends Component {
+  constructor(){
+    super();
+    this.state ={
+      currentRecs: true
+    }
+  }
   render() {
+    let search;
+    if (this.state.currentRecs === true) {
+      search = <SearchBar/>;
+    } else {
+      search = <Text>Hi</Text>;
+    }
     return (
       <View style={styles.container}>
         <View style={styles.toggleSearch}>
-          <TouchableOpacity>
-            <Text style={styles.toggleMenu}>MY TWOCENTS</Text>
+          <TouchableOpacity onPress={() => this.setState({currentRecs: true})}>
+            <Text style={ (this.state.currentRecs == false) ? styles.toggleMenu : styles.toggleMenuTrue}>MY TWOCENTS</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={styles.toggleMenu}>NEW TWOCENTS</Text>
+          <TouchableOpacity onPress={() => this.setState({currentRecs: false})}>
+            <Text style={ (this.state.currentRecs == false) ? styles.toggleMenuTrue : styles.toggleMenu}>NEW TWOCENTS</Text>
           </TouchableOpacity>
         </View>
-        <SearchBar />
-        <Text style={styles.text}>Search</Text>
+          <View style={styles.searchMenu}>
+            {search}
+          </View>
+        <ScrollView>
+        </ScrollView>
       </View>
     );
   }
@@ -26,7 +41,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#2C2540',
     alignItems: 'center',
-    paddingTop: 50
+    paddingTop: 50,
   },
   text: {
     color: '#EE933F',
@@ -42,5 +57,16 @@ const styles = StyleSheet.create({
   toggleMenu: {
     fontSize: 18,
     color: '#CCC0DD'
+  },
+  toggleMenuTrue: {
+    fontSize: 18,
+    color: '#CCC0DD',
+    fontWeight: '800'
+  },
+  searchMenu: {
+    display: 'flex',
+    justifyContent: 'center',
+    width: '100%',
+    marginLeft: '15%'
   }
 });
