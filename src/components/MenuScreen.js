@@ -1,32 +1,8 @@
 import React, { Component } from "react";
 import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
-import { UserScreen } from "./UserScreen";
-import {
-  createAppContainer,
-  StackActions,
-  NavigationActions,
-  withNavigation
-} from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
 
-// const MenuStack = createStackNavigator(
-//   {
-//     User: UserScreen,
-//     Menu: MenuScreen
-//   },
-//   {
-//     initialRouteName: 'Menu'
-//   });
 
-// const MenuLinks = createAppContainer(MenuStack);
-
-// export default class App extends React.Component {
-//   render() {
-//     return <AppContainer />;
-//   }
-// }
-
-class MenuScreen extends Component {
+export class MenuScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -42,7 +18,6 @@ class MenuScreen extends Component {
             TwoCents is a cross pollination student project presented in Module
             4 of Turing School of Software and Design
           </Text>
-          {/* <Text style={styles.links} onPress={() => }>My Profile</Text> */}
           <TouchableOpacity
             style={styles.links}
             onPress={() => this.props.navigation.navigate( {routeName: 'User'} )}
@@ -114,20 +89,3 @@ const styles = StyleSheet.create({
   }
 });
 
-const MenuStack = createStackNavigator(
-  {
-    Menu: MenuScreen,
-    User: UserScreen
-  },
-  // {
-  //   initialRouteName: 'Menu'
-  // }
-  );
-
-const MenuLinks = createAppContainer(MenuStack);
-
-export class Menu extends Component {
-  render() {
-    return(<MenuLinks/>)
-  }
-};

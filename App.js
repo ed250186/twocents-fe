@@ -3,18 +3,17 @@ import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { Provider } from 'react-redux';
 import  { createStore }  from 'redux';
-import {rootReducer} from './src/reducers'
+import { rootReducer } from './src/reducers';
 import { HomeScreen } from './src/components/HomeScreen';
-import { MenuScreen, Menu } from './src/components/MenuScreen';
-import { UserScreen } from './src/components/UserScreen';
 import { SearchScreen } from './src/components/SearchScreen';
+import { MenuRouter } from './MenuRouter';
 
 const store = createStore(rootReducer)
 
 const TabNavigator = createBottomTabNavigator({
   Home: HomeScreen,
   Search: SearchScreen,
-  Menu: Menu,
+  Menu: MenuRouter,
 },
 {
   tabBarOptions: {
