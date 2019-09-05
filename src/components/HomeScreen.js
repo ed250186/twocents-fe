@@ -20,7 +20,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#2C2540',
     alignItems: 'center',
-    paddingTop: 50
+    paddingTop: 50,
+    
   },
   text: {
     color: '#EE933F',

@@ -1,7 +1,28 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Image, TouchableOpacity, Button } from 'react-native';
+import { 
+  Text, 
+  View, 
+  StyleSheet, 
+  Image, 
+  TouchableOpacity, 
+  Button 
+} from 'react-native';
+import Dialog, { 
+  DialogContent, 
+  SlideAnimation,
+  DialogTitle,
+  DialogButton,
+  DialogFooter,
+} from 'react-native-popup-dialog';
+
 
 export class UserScreen extends Component {
+  constructor() {
+    super()
+    this.state = {
+      popupVisible: false,
+    }
+  }
 
   static navigationOptions = ({ navigation }) => {
       return {
@@ -32,9 +53,33 @@ export class UserScreen extends Component {
             <Text style={styles.minorText}>from global store</Text>
           </View>
         </View>
-        <TouchableOpacity style={styles.button} activeOpacity={.5} >
+        <TouchableOpacity 
+          style={styles.button} 
+          activeOpacity={.5} 
+          onPress={() => this.setState({popupVisible: true})}  
+        >
           <Text style={styles.buttonText}>Log Out</Text>
         </TouchableOpacity>
+        <Dialog 
+          dialogTitle={<DialogTitle title="Log Out" />}
+          visible={this.state.popupVisible} 
+          dialogAnimation={new SlideAnimation({
+            slideFrom: 'bottom',
+          })}
+          footer={
+            <DialogFooter>
+              <DialogButton 
+                text='Cancel'
+                onPress={() => this.setState({popupVisible: false})}
+              ></DialogButton>
+              <DialogButton text='Log Out'></DialogButton>
+            </DialogFooter>
+          } 
+        >
+          <DialogContent>
+            <Text style={{margin: 20}}>Are you sure you want to log out?</Text>
+          </DialogContent>
+        </Dialog>
       </View>
     );
   }
