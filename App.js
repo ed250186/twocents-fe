@@ -37,10 +37,10 @@ const Modal = createStackNavigator({
   mode: 'modal',
   headerMode: 'float',
   defaultNavigationOptions: {
+    
     headerStyle: {
         backgroundColor: '#2C2540',
-        elevation: 0,
-        shadowOpacity: 0,
+        borderBottomWidth: 0,
     },
   },
 })
