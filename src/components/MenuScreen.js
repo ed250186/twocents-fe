@@ -22,15 +22,20 @@ export class MenuScreen extends Component {
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate( {routeName: 'User'} )}
           >
-            <Text>My Profile</Text>
+            <Text style={styles.links}>My Profile</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.links}
             onPress={() => this.props.navigation.navigate( {routeName: 'Settings'} )}
           >
-            <Text>Settings</Text>
+            <Text style={styles.links}>Settings</Text>
           </TouchableOpacity>
-          <Text style={styles.links}>Contact</Text>
+          <TouchableOpacity
+            style={styles.links}
+            onPress={() => this.props.navigation.navigate( {routeName: 'About'} )}
+          >
+            <Text style={styles.links}>About</Text>
+          </TouchableOpacity>
         </View>
         <View style={styles.yelp}>
           <Text style={styles.yelpText}>Powered by</Text>
