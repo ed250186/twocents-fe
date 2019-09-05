@@ -5,15 +5,8 @@ import {
   StyleSheet, 
   Image, 
   TouchableOpacity, 
-  Button 
 } from 'react-native';
-import Dialog, { 
-  DialogContent, 
-  SlideAnimation,
-  DialogTitle,
-  DialogButton,
-  DialogFooter,
-} from 'react-native-popup-dialog';
+import { LogOutPopup } from './LogOutPopup'
 
 
 export class UserScreen extends Component {
@@ -32,6 +25,10 @@ export class UserScreen extends Component {
         },
       };
     };
+
+    handlePopup = (boolean) => {
+      this.setState({popupVisible: boolean})
+    }
 
   render() {
     return (
@@ -60,26 +57,10 @@ export class UserScreen extends Component {
         >
           <Text style={styles.buttonText}>Log Out</Text>
         </TouchableOpacity>
-        <Dialog 
-          dialogTitle={<DialogTitle title="Log Out" />}
-          visible={this.state.popupVisible} 
-          dialogAnimation={new SlideAnimation({
-            slideFrom: 'bottom',
-          })}
-          footer={
-            <DialogFooter>
-              <DialogButton 
-                text='Cancel'
-                onPress={() => this.setState({popupVisible: false})}
-              ></DialogButton>
-              <DialogButton text='Log Out'></DialogButton>
-            </DialogFooter>
-          } 
-        >
-          <DialogContent>
-            <Text style={{margin: 20}}>Are you sure you want to log out?</Text>
-          </DialogContent>
-        </Dialog>
+        <LogOutPopup 
+          popupVisible={this.state.popupVisible}
+          handlePopup={this.handlePopup}
+        />
       </View>
     );
   }
