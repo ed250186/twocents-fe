@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
-export class HomeScreen extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      LoggedIn: false,
-    }
-  }
-  
+export class SettingsScreen extends Component {
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: 'Settings',
+      headerStyle: {
+        backgroundColor: 'white',
+      },
+    };
+  };
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>Home!</Text>
+        <Text style={styles.text}>Settings!</Text>
       </View>
     );
   }
@@ -23,8 +25,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#2C2540',
     alignItems: 'center',
-    paddingTop: 50,
-    
+    paddingTop: 50
   },
   text: {
     color: '#EE933F',

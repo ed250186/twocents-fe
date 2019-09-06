@@ -1,7 +1,35 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { 
+  Text, 
+  View, 
+  StyleSheet, 
+  Image, 
+  TouchableOpacity, 
+} from 'react-native';
+import { LogOutPopup } from './LogOutPopup'
+
 
 export class UserScreen extends Component {
+  constructor() {
+    super()
+    this.state = {
+      popupVisible: false,
+    }
+  }
+
+  static navigationOptions = ({ navigation }) => {
+      return {
+        title: 'My Profile',
+        headerStyle: {
+          backgroundColor: 'white',
+        },
+      };
+    };
+
+    handlePopup = (boolean) => {
+      this.setState({popupVisible: boolean})
+    }
+
   render() {
     return (
       <View style={styles.container}>
@@ -22,9 +50,18 @@ export class UserScreen extends Component {
             <Text style={styles.minorText}>from global store</Text>
           </View>
         </View>
-        <TouchableOpacity style={styles.button} activeOpacity={.5} >
+        <TouchableOpacity 
+          style={styles.button} 
+          activeOpacity={.5} 
+          onPress={() => this.setState({popupVisible: true})}  
+        >
           <Text style={styles.buttonText}>Log Out</Text>
         </TouchableOpacity>
+        <LogOutPopup 
+          popupVisible={this.state.popupVisible}
+          handlePopup={this.handlePopup}
+          navigation={this.props.navigation}
+        />
       </View>
     );
   }
@@ -86,3 +123,5 @@ const styles = StyleSheet.create({
     borderColor: 'green'
   }
 });
+
+export default UserScreen;
