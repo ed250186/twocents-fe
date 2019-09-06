@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
 export class LogInScreen extends Component {
   constructor() {
@@ -9,6 +9,13 @@ export class LogInScreen extends Component {
   render() {
     return(
       <View style={styles.container}>
+        <View style={styles.appLogo}>
+          <Image
+            source={require("../images/twocents-logo.png")}
+            style={styles.image}
+          />
+          <Text style={styles.text}>TwoCents</Text>
+        </View>
         <TouchableOpacity 
           style={styles.button} 
           activeOpacity={.5} 
@@ -30,10 +37,24 @@ export class LogInScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: '15%',
+    paddingTop: '5%',
     flex: 1,
     backgroundColor: '#2C2540',
     alignItems: 'center',
+  },
+  appLogo: {
+    alignItems: 'center',
+    marginBottom: '15%',
+    borderColor: 'red',
+    borderWidth: 1,
+  },
+  image: {
+    height: 200,
+    width: 200,
+  },
+  text: {
+    color: '#EE933F',
+    fontSize: 30,
   },
   buttonText: {
     color: '#CCC0DD',
@@ -50,4 +71,5 @@ const styles = StyleSheet.create({
     shadowColor: 'black',
     shadowOpacity: 1.0,
   },
+  
 })
