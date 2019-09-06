@@ -19,6 +19,7 @@ class SearchBar extends Component {
     return (
       <View style={styles.container}>
         <TextInput 
+          placeholder='Enter saved location'
           style={styles.input}
           value={this.state.input}
           onChangeText={handleChange}

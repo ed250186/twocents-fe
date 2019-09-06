@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import SearchBar from './SearchBar';
+import SearchBarCallAPI from './SearchBarCallAPI'
 
 export class SearchScreen extends Component {
   constructor(){
@@ -14,7 +15,7 @@ export class SearchScreen extends Component {
     if (this.state.currentRecs === true) {
       search = <SearchBar/>;
     } else {
-      search = <Text>Hi</Text>;
+      search = <SearchBarCallAPI/>;
     }
     return (
       <View style={styles.container}>
