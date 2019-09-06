@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Text, View, StyleSheet, TextInput } from 'react-native';
 
-class SearchBar extends React.Component {
+class SearchBar extends Component {
   constructor(props) {
     super(props)
     this.state ={
@@ -19,6 +19,7 @@ class SearchBar extends React.Component {
     return (
       <View style={styles.container}>
         <TextInput 
+          placeholder='Enter saved location'
           style={styles.input}
           value={this.state.input}
           onChangeText={handleChange}
