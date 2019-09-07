@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, ScrollView } from 'react-native';
-import { getAllRecommendations } from '../../../APICalls'
+import { getAllRecommendations } from '../../../utils/APICalls'
 import { CategoryScroll } from '../CategoryScroll/CategoryScroll'
 
 
