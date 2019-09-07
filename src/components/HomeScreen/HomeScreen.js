@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, ScrollView } from 'react-native';
 import { getAllRecommendations } from '../../../APICalls'
 import { CategoryScroll } from '../CategoryScroll/CategoryScroll'
+import { connect } from 'react-redux';
+import { setRecommendations } from '../../actions/index';
 
 
 export class HomeScreen extends Component {
@@ -9,7 +11,6 @@ export class HomeScreen extends Component {
     super(props)
     this.state = {
       LoggedIn: false,
-      allRecommendations: [],
       categories: []
     }
   }
@@ -20,12 +21,13 @@ export class HomeScreen extends Component {
 
   fetchRecommendations = async () => {
     await getAllRecommendations()
-      .then(data => this.setState({allRecommendations: data}))
+      .then(data => this.props.setRecommendations(data))
     this.filterCategories()
+    
   }
 
   filterCategories = () => {
-    const categoryList = this.state.allRecommendations.reduce((acc, rec) => {
+    const categoryList = this.props.allRecommendations.reduce((acc, rec) => {
       rec.categories.forEach(cat => {
         if(!acc[cat]) {
           acc[cat] = []
@@ -35,9 +37,8 @@ export class HomeScreen extends Component {
       return acc
     }, {})
     this.setState({categories: categoryList})
-    // console.log(Object.keys(this.state.categories))
-    // console.log(Object.keys(this.state.categories)[7])
-    // console.log(Object.values(this.state.categories)[7].length)
+  
+    console.log(Object.entries(this.state.categories).length)
   }
   
   render() {
@@ -74,3 +75,13 @@ const styles = StyleSheet.create({
     fontSize: 30,
   }
 });
+
+const mapStateToProps = state => ({
+  allRecommendations: state.allRecommendations
+})
+
+const MapDispatchToProps = dispatch => ({
+  setRecommendations: (cat) => dispatch(setRecommendations(cat))
+})
+
+export default connect(mapStateToProps, MapDispatchToProps)(HomeScreen)

@@ -8,3 +8,8 @@ export const isLoggedIn = (boolean) => ({
 //   type: 'LOGGED_OUT',
 //   payload: boolean
 // })
+
+export const setRecommendations = (recommendation) => ({
+  type: 'RECOMMENDATIONS',
+  payload: recommendation
+})
