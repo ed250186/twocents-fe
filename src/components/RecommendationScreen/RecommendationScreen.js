@@ -53,6 +53,13 @@ export class RecommendationsScreen extends Component {
               coordinate={{latitude: 39.7392, longitude: -104.9903, latitudeDelta: 0.0922, longitudeDelta: 0.0421}}
             />
           </MapView>
+          <View style={styles.yelp}>
+            <Text style={styles.yelpText}>Powered by</Text>
+            <Image
+              source={require("../../images/Yelp_trademark_RGB_outline.png")}
+              style={{ width: 100, height: 40, marginTop: -15 }}
+            />
+          </View>
         </View>
       </ScrollView>
     )
@@ -92,5 +99,18 @@ const styles = StyleSheet.create({
   },
   t_and_h: {
     alignItems: 'center'
+  },
+  yelpText: {
+    color: "#CCC0DD",
+    fontSize: 16
+  },
+  yelp: {
+    height: 50,
+    width: '100%',
+    flexDirection: "row",
+    justifyContent: "center",
+    alignContent: "center",
+    marginTop: 50,
+    marginBottom: 50
   }
 })
