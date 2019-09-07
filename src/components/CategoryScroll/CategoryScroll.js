@@ -25,11 +25,10 @@ export class CategoryScroll extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    height: 200,
-    borderColor: 'red',
-    borderWidth: 1
+    
   },
   mainText: {
+    marginLeft: 10,
     color: '#EE933F',
     fontSize: 30,
   }
