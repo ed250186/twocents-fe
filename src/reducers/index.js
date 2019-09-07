@@ -1,15 +1,10 @@
 import { combineReducers } from 'redux';
 import { loggedInReducer } from './loggedInReducer';
-
-
-const test1 = () => {
-  switch('') {
-    default: 
-      return('hello')
-  }
-}
+import { loadingReducer } from './loadingReducer';
+import { errorReducer } from './errorReducer';
 
 export const rootReducer = combineReducers({
-  test: test1,
   loggedIn: loggedInReducer,
+  loading: loadingReducer,
+  error: errorReducer
 })

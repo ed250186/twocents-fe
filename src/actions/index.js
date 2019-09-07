@@ -8,3 +8,16 @@ export const isLoggedIn = (boolean) => ({
 //   type: 'LOGGED_OUT',
 //   payload: boolean
 // })
+
+export const loadingComplete = () => ({
+  type: 'LOADING_COMPLETE'
+})
+
+export const hasErrored = message => ({
+  type: 'HAS_ERRORED',
+  message
+})
+
+export const clearError = () => ({
+  type: 'CLEAR_MESSAGE'
+})

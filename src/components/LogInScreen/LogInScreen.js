@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import Expo from 'expo'
 
 export class LogInScreen extends Component {
   constructor() {
