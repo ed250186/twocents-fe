@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchScreen should match to snapshot 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#2C2540",
+      "flex": 1,
+      "paddingTop": 50,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "display": "flex",
+        "flexDirection": "row",
+        "justifyContent": "space-evenly",
+        "marginBottom": 15,
+        "width": "90%",
+      }
+    }
+  >
+    <TouchableOpacity
+      activeOpacity={0.2}
+      onPress={[Function]}
+    >
+      <Text
+        style={
+          Object {
+            "color": "#CCC0DD",
+            "fontSize": 18,
+            "fontWeight": "800",
+          }
+        }
+      >
+        MY TWOCENTS
+      </Text>
+    </TouchableOpacity>
+    <TouchableOpacity
+      activeOpacity={0.2}
+      onPress={[Function]}
+    >
+      <Text
+        style={
+          Object {
+            "color": "#CCC0DD",
+            "fontSize": 18,
+          }
+        }
+      >
+        NEW TWOCENTS
+      </Text>
+    </TouchableOpacity>
+  </View>
+  <View
+    style={
+      Object {
+        "display": "flex",
+        "justifyContent": "center",
+        "marginLeft": "15%",
+        "width": "100%",
+      }
+    }
+  >
+    <SearchBar />
+  </View>
+  <ScrollViewMock />
+</View>
+`;
