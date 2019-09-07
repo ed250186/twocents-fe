@@ -23,7 +23,6 @@ export class HomeScreen extends Component {
     await getAllRecommendations()
       .then(data => this.props.setRecommendations(data))
     this.filterCategories()
-    
   }
 
   filterCategories = () => {
@@ -37,8 +36,6 @@ export class HomeScreen extends Component {
       return acc
     }, {})
     this.setState({categories: categoryList})
-  
-    console.log(Object.entries(this.state.categories).length)
   }
   
   render() {
