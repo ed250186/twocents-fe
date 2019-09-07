@@ -10,7 +10,7 @@ export class MiniRec extends Component {
   render() {
     const {name, image, id } = this.props.recommendation
     return(
-      <TouchableWithoutFeedback onPress={() => console.log(id)}>
+      <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('RecScreen', {recommendation: this.props.recommendation})}>
         <View style={styles.container}>
           <Image source={{uri: image}} style={styles.image}/>
           <Text style={styles.title}>{name}</Text>

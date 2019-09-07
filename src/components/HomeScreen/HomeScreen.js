@@ -40,7 +40,12 @@ export class HomeScreen extends Component {
   
   render() {
     const sideScroll = Object.entries(this.state.categories).map((cat, key) => (
-      <CategoryScroll category={cat[0]} recommendations={cat[1]} key={key}/>
+      <CategoryScroll 
+        category={cat[0]} 
+        recommendations={cat[1]} 
+        key={key}
+        navigation={this.props.navigation}  
+      />
     ))
     return (
       <View style={styles.container}>

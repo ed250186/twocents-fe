@@ -9,7 +9,11 @@ export class CategoryScroll extends Component {
 
   render() {
     const recommendations = this.props.recommendations.map(rec => (
-      <MiniRec key={rec.id} recommendation={rec} />
+      <MiniRec 
+        key={rec.id} 
+        recommendation={rec} 
+        navigation={this.props.navigation} 
+      />
     ))
     return(
       <View style={styles.container}>
