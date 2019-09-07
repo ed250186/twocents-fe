@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import { Text, View, StyleSheet, Image,TouchableWithoutFeedback } from 'react-native';
 
 
 export class MiniRec extends Component {
@@ -8,12 +8,14 @@ export class MiniRec extends Component {
   }
 
   render() {
-    const {name, image } = this.props.recommendation
+    const {name, image, id } = this.props.recommendation
     return(
-      <View style={styles.container}>
-        <Image source={{uri: image}} style={styles.image}/>
-        <Text style={styles.title}>{name}</Text>
-      </View>
+      <TouchableWithoutFeedback onPress={() => console.log(id)}>
+        <View style={styles.container}>
+          <Image source={{uri: image}} style={styles.image}/>
+          <Text style={styles.title}>{name}</Text>
+        </View>
+      </TouchableWithoutFeedback>
     )
   }
 }
