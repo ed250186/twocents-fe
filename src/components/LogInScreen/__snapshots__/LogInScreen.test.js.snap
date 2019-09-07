@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LogInScreen should match to snapshot 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#2C2540",
+      "flex": 1,
+      "paddingBottom": "5%",
+      "paddingTop": "5%",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "borderColor": "red",
+        "borderWidth": 1,
+        "height": "30%",
+        "marginBottom": "10%",
+        "width": "90%",
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "testUri": "../../../src/images/twocents-logo.png",
+        }
+      }
+      style={
+        Object {
+          "height": "90%",
+          "width": "60%",
+        }
+      }
+    />
+    <Text
+      style={
+        Object {
+          "color": "#EE933F",
+          "fontSize": 30,
+        }
+      }
+    >
+      TwoCents
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "borderColor": "red",
+        "borderWidth": 1,
+        "height": "40%",
+        "marginBottom": "10%",
+        "width": "90%",
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "borderColor": "red",
+        "borderWidth": 1,
+        "height": "20%",
+        "justifyContent": "space-evenly",
+        "width": "90%",
+      }
+    }
+  >
+    <TouchableOpacity
+      activeOpacity={0.5}
+      onPress={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "rgba(204, 192, 221, 0.14)",
+          "borderColor": "#EE933F",
+          "borderRadius": 10,
+          "borderWidth": 1,
+          "shadowColor": "black",
+          "shadowOffset": Object {
+            "height": 10,
+            "width": 5,
+          },
+          "shadowOpacity": 1,
+          "width": "100%",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#CCC0DD",
+            "fontSize": 25,
+          }
+        }
+      >
+        Sign In
+      </Text>
+    </TouchableOpacity>
+    <TouchableOpacity
+      activeOpacity={0.5}
+      onPress={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "rgba(204, 192, 221, 0.14)",
+          "borderColor": "#EE933F",
+          "borderRadius": 10,
+          "borderWidth": 1,
+          "shadowColor": "black",
+          "shadowOffset": Object {
+            "height": 10,
+            "width": 5,
+          },
+          "shadowOpacity": 1,
+          "width": "100%",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#CCC0DD",
+            "fontSize": 25,
+          }
+        }
+      >
+        Sign Up
+      </Text>
+    </TouchableOpacity>
+  </View>
+</View>
+`;
