@@ -7,13 +7,13 @@ import  { createStore }  from 'redux';
 import { connect } from 'react-redux';
 import { Icon } from 'react-native-elements';
 import { rootReducer } from './src/reducers';
-import { HomeScreen } from './src/components/HomeScreen';
-import { SearchScreen } from './src/components/SearchScreen';
-import { MenuScreen } from './src/components/MenuScreen';
-import { UserScreen } from "./src/components/UserScreen";
-import { SettingsScreen } from './src/components/SettingsScreen';
-import { AboutScreen } from './src/components/AboutScreen';
-import { LogInScreen } from './src/components/LogInScreen';
+import { HomeScreen } from './src/components/HomeScreen/HomeScreen';
+import { SearchScreen } from './src/components/SearchScreen/SearchScreen';
+import { MenuScreen } from './src/components/MenuScreen/MenuScreen';
+import { UserScreen } from "./src/components/UserScreen/UserScreen";
+import { SettingsScreen } from './src/components/SettingsScreen/SettingsScreen';
+import { AboutScreen } from './src/components/AboutScreen/AboutScreen';
+import { LogInScreen } from './src/components/LogInScreen/LogInScreen';
 
 const store = createStore(rootReducer)
 

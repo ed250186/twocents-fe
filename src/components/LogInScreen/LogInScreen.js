@@ -11,7 +11,7 @@ export class LogInScreen extends Component {
       <View style={styles.container}>
         <View style={styles.appLogo}>
           <Image
-            source={require("../images/twocents-logo.png")}
+            source={require("../../images/twocents-logo.png")}
             style={styles.image}
           />
           <Text style={styles.text}>TwoCents</Text>
