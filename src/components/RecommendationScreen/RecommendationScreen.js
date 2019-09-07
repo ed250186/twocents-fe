@@ -44,7 +44,7 @@ export class RecommendationsScreen extends Component {
             </View>
           </View>
           <MapView
-            style={{flex: 1, height: 300, width: '100%'}}
+            style={{flex: 1, height: 300, width: '100%', marginBottom: 20}}
             region={{latitude: 39.7392, longitude: -104.9903, latitudeDelta: 0.0922, longitudeDelta: 0.0421}}
             showsUserLocation={true}
             showsCompass={true}
@@ -53,6 +53,9 @@ export class RecommendationsScreen extends Component {
               coordinate={{latitude: 39.7392, longitude: -104.9903, latitudeDelta: 0.0922, longitudeDelta: 0.0421}}
             />
           </MapView>
+          <View style={styles.titleInfo}>
+            <Text style={styles.title}>Notes</Text>
+          </View>
           <View style={styles.yelp}>
             <Text style={styles.yelpText}>Powered by</Text>
             <Image
@@ -94,7 +97,7 @@ const styles = StyleSheet.create({
   },
   info: {
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
+    justifyContent: 'space-around',
     margin: 30
   },
   t_and_h: {
