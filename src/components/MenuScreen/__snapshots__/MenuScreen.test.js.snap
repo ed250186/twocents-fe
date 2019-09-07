@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuScreen should match to snapshot 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#2C2540",
+      "display": "flex",
+      "flex": 1,
+      "padding": "5%",
+    }
+  }
+>
+  <TouchableOpacity
+    activeOpacity={0.2}
+    onPress={[Function]}
+  >
+    <Text
+      style={
+        Object {
+          "color": "#EE933F",
+          "fontSize": 32,
+          "paddingBottom": 20,
+          "paddingTop": 20,
+          "textAlign": "left",
+          "textDecorationLine": "underline",
+        }
+      }
+    >
+      My Profile
+    </Text>
+  </TouchableOpacity>
+  <TouchableOpacity
+    activeOpacity={0.2}
+    onPress={[Function]}
+  >
+    <Text
+      style={
+        Object {
+          "color": "#EE933F",
+          "fontSize": 32,
+          "paddingBottom": 20,
+          "paddingTop": 20,
+          "textAlign": "left",
+          "textDecorationLine": "underline",
+        }
+      }
+    >
+      Settings
+    </Text>
+  </TouchableOpacity>
+  <TouchableOpacity
+    activeOpacity={0.2}
+    onPress={[Function]}
+  >
+    <Text
+      style={
+        Object {
+          "color": "#EE933F",
+          "fontSize": 32,
+          "paddingBottom": 20,
+          "paddingTop": 20,
+          "textAlign": "left",
+          "textDecorationLine": "underline",
+        }
+      }
+    >
+      About
+    </Text>
+  </TouchableOpacity>
+</View>
+`;
