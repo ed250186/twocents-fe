@@ -13,9 +13,22 @@ export class RecommendationsScreen extends Component {
     const { navigation } = this.props;
     const recommendation = navigation.getParam('recommendation');
     const {name, image, phone, rating, reviewCount, categories, location, price, } = recommendation
+    const categoryText = categories.join(', ')
     return(
       <View style={styles.container}>
-        <Text style={styles.title}>{name}</Text>
+        <View>
+          <Text style={styles.title}>{name}</Text>
+          <View>
+            <Text style={styles.text}>
+              {reviewCount} reviews on
+              <Image
+                source={require("../../images/Yelp_trademark_RGB_outline.png")}
+                style={{ width: 70, height: 30, marginTop: -5 }}
+              />
+            </Text>
+          </View>
+          <Text style={styles.text}>{categoryText}</Text>
+        </View>
         <Image source={{uri: image}} style={styles.image}/>
       </View>
     )
@@ -31,12 +44,16 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   title: {
-    color: '#EE933F',
+    color: '#CCC0DD',
     fontSize: 30,
   },
   image: {
     height: 300,
-    width: 300,
+    width: '100%',
     borderRadius: 5
+  },
+  text: {
+    color: '#CCC0DD',
+    fontSize: 15,
   }
 })
