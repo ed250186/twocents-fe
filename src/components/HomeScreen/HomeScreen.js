@@ -27,18 +27,22 @@ export class HomeScreen extends Component {
   filterCategories = () => {
     const categoryList = this.state.allRecommendations.reduce((acc, rec) => {
       rec.categories.forEach(cat => {
-        if(!acc.includes(cat)) {
-          acc.push(cat)
+        if(!acc[cat]) {
+          acc[cat] = []
         }
+        acc[cat].push(rec)
       })
       return acc
-    }, [])
+    }, {})
     this.setState({categories: categoryList})
+    // console.log(Object.keys(this.state.categories))
+    // console.log(Object.keys(this.state.categories)[7])
+    // console.log(Object.values(this.state.categories)[7].length)
   }
   
   render() {
-    const sideScroll = this.state.categories.map((cat, key) => (
-      <CategoryScroll category={cat} key={key}/>
+    const sideScroll = Object.entries(this.state.categories).map((cat, key) => (
+      <CategoryScroll category={cat[0]} recommendations={cat[1]} key={key}/>
     ))
     return (
       <View style={styles.container}>
