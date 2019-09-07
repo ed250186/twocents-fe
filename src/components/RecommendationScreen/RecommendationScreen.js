@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, Image, ScrollView } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
+
 
 export class RecommendationsScreen extends Component {
   static navigationOptions = {
@@ -41,11 +43,16 @@ export class RecommendationsScreen extends Component {
               <Text style={styles.text}>{hours[0]}</Text>
             </View>
           </View>
+          <MapView style={{flex: 1, height: 300, width: '100%'}}
+          region={{latitude: 39.7392, longitude: -104.9903,          latitudeDelta: 0.0922, longitudeDelta: 0.0421}}
+          showsUserLocation={true}/>
         </View>
       </ScrollView>
     )
   }
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
