@@ -70,6 +70,7 @@ const Modal = createStackNavigator({
         backgroundColor: '#2C2540',
         borderBottomWidth: 0,
     },
+    headerTintColor: '#EE933F'
   },
 })
 

@@ -6,6 +6,9 @@ export class MiniRec extends Component {
   constructor() {
     super()
   }
+  static navigationOptions = {
+    headerTintColor: '#EE933F'
+  }
 
   render() {
     const {name, image, id } = this.props.recommendation

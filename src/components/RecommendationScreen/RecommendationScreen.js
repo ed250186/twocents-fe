@@ -4,7 +4,7 @@ import { Text, View, StyleSheet, Image, Button } from 'react-native';
 export class RecommendationsScreen extends Component {
   static navigationOptions = {
     headerStyle: {
-        backgroundColor: 'white',
+        backgroundColor: '#2C2540',
         borderBottomWidth: 0,
     },
   };

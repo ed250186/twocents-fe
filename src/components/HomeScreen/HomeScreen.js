@@ -15,6 +15,10 @@ export class HomeScreen extends Component {
     }
   }
 
+  static navigationOptions = {
+    headerTintColor: '#EE933F'
+  }
+
   componentDidMount() {
     this.fetchRecommendations()
   }
