@@ -43,9 +43,16 @@ export class RecommendationsScreen extends Component {
               <Text style={styles.text}>{hours[0]}</Text>
             </View>
           </View>
-          <MapView style={{flex: 1, height: 300, width: '100%'}}
-          region={{latitude: 39.7392, longitude: -104.9903,          latitudeDelta: 0.0922, longitudeDelta: 0.0421}}
-          showsUserLocation={true}/>
+          <MapView
+            style={{flex: 1, height: 300, width: '100%'}}
+            region={{latitude: 39.7392, longitude: -104.9903, latitudeDelta: 0.0922, longitudeDelta: 0.0421}}
+            showsUserLocation={true}
+            showsCompass={true}
+          >
+            <Marker 
+              coordinate={{latitude: 39.7392, longitude: -104.9903, latitudeDelta: 0.0922, longitudeDelta: 0.0421}}
+            />
+          </MapView>
         </View>
       </ScrollView>
     )
