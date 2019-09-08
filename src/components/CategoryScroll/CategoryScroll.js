@@ -18,7 +18,10 @@ export class CategoryScroll extends Component {
     return(
       <View style={styles.container}>
         <Text style={styles.mainText}>{this.props.category}</Text>
-        <ScrollView horizontal={true}>
+        <ScrollView 
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+        >
           {recommendations}
         </ScrollView>
 

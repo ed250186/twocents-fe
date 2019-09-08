@@ -4,17 +4,16 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from "react-navigation-stack";
 import { Provider } from 'react-redux';
 import  { createStore }  from 'redux';
-import { connect } from 'react-redux';
 import { Icon } from 'react-native-elements';
 import { rootReducer } from './src/reducers';
 import HomeScreen from './src/components/HomeScreen/HomeScreen';
 import { SearchScreen } from './src/components/SearchScreen/SearchScreen';
 import { MenuScreen } from './src/components/MenuScreen/MenuScreen';
-import { UserScreen } from "./src/components/UserScreen/UserScreen";
+import UserScreen from "./src/components/UserScreen/UserScreen";
 import { SettingsScreen } from './src/components/SettingsScreen/SettingsScreen';
 import { AboutScreen } from './src/components/AboutScreen/AboutScreen';
 import { LogInScreen } from './src/components/LogInScreen/LogInScreen';
-import { RecommendationsScreen } from './src/components/RecommendationScreen/RecommendationScreen'
+import { RecommendationsScreen } from './src/components/RecommendationScreen/RecommendationScreen';
 
 
 const store = createStore(rootReducer)
