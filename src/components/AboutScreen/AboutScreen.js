@@ -17,7 +17,7 @@ export class AboutScreen extends Component {
         <View style={styles.main}>
           <View style={styles.imageBox}>
             <Image
-              source={require("../images/twocents-logo.png")}
+              source={require("../../images/twocents-logo.png")}
               style={{ width: 200, height: 200 }}
             />
           </View>
@@ -30,7 +30,7 @@ export class AboutScreen extends Component {
         <View style={styles.yelp}>
           <Text style={styles.yelpText}>Powered by</Text>
           <Image
-            source={require("../images/Yelp_trademark_RGB_outline.png")}
+            source={require("../../images/Yelp_trademark_RGB_outline.png")}
             style={{ width: 100, height: 40, marginTop: -15 }}
           />
         </View>

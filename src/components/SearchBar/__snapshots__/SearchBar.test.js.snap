@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBar should match to snapshot 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "rgba(204, 192, 221, 0.4)",
+      "borderRadius": 20,
+      "height": 35,
+      "justifyContent": "space-around",
+      "width": "84%",
+    }
+  }
+>
+  <TextInput
+    allowFontScaling={true}
+    onChangeText={[Function]}
+    onSubmitEditing={[Function]}
+    placeholder="Enter saved location"
+    rejectResponderTermination={true}
+    style={
+      Object {
+        "color": "#FFF",
+        "width": "90%",
+      }
+    }
+    underlineColorAndroid="transparent"
+    value=""
+  />
+</View>
+`;

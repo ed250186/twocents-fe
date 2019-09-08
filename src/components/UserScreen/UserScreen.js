@@ -6,7 +6,7 @@ import {
   Image, 
   TouchableOpacity, 
 } from 'react-native';
-import { LogOutPopup } from './LogOutPopup'
+import { LogOutPopup } from '../LogOutPopup/LogOutPopup'
 
 
 export class UserScreen extends Component {

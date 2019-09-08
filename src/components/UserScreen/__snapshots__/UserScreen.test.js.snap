@@ -1,0 +1,176 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserScreen should match to snapshot 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#2C2540",
+      "flex": 1,
+      "paddingTop": "15%",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "borderColor": "green",
+        "borderWidth": 1,
+        "height": "20%",
+        "width": "80%",
+      }
+    }
+  >
+    <Image
+      style={
+        Object {
+          "borderColor": "red",
+          "borderWidth": 1,
+          "height": 100,
+          "width": 100,
+        }
+      }
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "height": "75%",
+        "paddingTop": "10%",
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "flex-start",
+          "display": "flex",
+          "justifyContent": "flex-start",
+          "margin": 30,
+          "width": "80%",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#EE933F",
+            "fontSize": 30,
+          }
+        }
+      >
+        Username
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "#CCC0DD",
+            "fontSize": 25,
+            "paddingLeft": 30,
+          }
+        }
+      >
+        name from global store
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "flex-start",
+          "display": "flex",
+          "justifyContent": "flex-start",
+          "margin": 30,
+          "width": "80%",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#EE933F",
+            "fontSize": 30,
+          }
+        }
+      >
+        Email
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "#CCC0DD",
+            "fontSize": 25,
+            "paddingLeft": 30,
+          }
+        }
+      >
+        Email from global store
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "flex-start",
+          "display": "flex",
+          "justifyContent": "flex-start",
+          "margin": 30,
+          "width": "80%",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#EE933F",
+            "fontSize": 30,
+          }
+        }
+      >
+        Recommendations
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "#CCC0DD",
+            "fontSize": 25,
+            "paddingLeft": 30,
+          }
+        }
+      >
+        from global store
+      </Text>
+    </View>
+  </View>
+  <TouchableOpacity
+    activeOpacity={0.5}
+    onPress={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "rgba(204, 192, 221, 0.14)",
+        "borderColor": "#EE933F",
+        "borderRadius": 10,
+        "borderWidth": 1,
+        "shadowColor": "black",
+        "shadowOffset": Object {
+          "height": 10,
+          "width": 5,
+        },
+        "shadowOpacity": 1,
+        "width": "80%",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#CCC0DD",
+          "fontSize": 25,
+        }
+      }
+    >
+      Log Out
+    </Text>
+  </TouchableOpacity>
+</View>
+`;

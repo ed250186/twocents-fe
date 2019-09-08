@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AboutScreen should match to snapshot 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#2C2540",
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "height": "90%",
+        "width": "90%",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "height": "35%",
+          "paddingTop": "5%",
+          "width": "100%",
+        }
+      }
+    >
+      <Image
+        source={
+          Object {
+            "testUri": "../../../src/images/twocents-logo.png",
+          }
+        }
+        style={
+          Object {
+            "height": 200,
+            "width": 200,
+          }
+        }
+      />
+    </View>
+    <Text
+      style={
+        Object {
+          "color": "#EE933F",
+          "fontSize": 30,
+        }
+      }
+    >
+      TwoCents
+    </Text>
+    <Text
+      style={
+        Object {
+          "color": "#CCC0DD",
+          "fontSize": 24,
+          "lineHeight": 0,
+          "paddingBottom": 50,
+          "paddingTop": 20,
+          "textAlign": "justify",
+        }
+      }
+    >
+      TwoCents is a cross pollination student project presented in Module 4 of Turing School of Software and Design
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "alignContent": "center",
+        "flexDirection": "row",
+        "height": "10%",
+        "justifyContent": "center",
+        "width": "100%",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#CCC0DD",
+          "fontSize": 16,
+        }
+      }
+    >
+      Powered by
+    </Text>
+    <Image
+      source={
+        Object {
+          "testUri": "../../../src/images/Yelp_trademark_RGB_outline.png",
+        }
+      }
+      style={
+        Object {
+          "height": 40,
+          "marginTop": -15,
+          "width": 100,
+        }
+      }
+    />
+  </View>
+</View>
+`;

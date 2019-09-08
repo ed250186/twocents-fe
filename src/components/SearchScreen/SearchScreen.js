@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import SearchBar from './SearchBar';
-import SearchBarCallAPI from './SearchBarCallAPI'
+import SearchBar from '../SearchBar/SearchBar';
+import SearchBarCallAPI from '../SearchBar/SearchBarCallAPI'
 
 export class SearchScreen extends Component {
   constructor(){

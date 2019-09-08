@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomeScreen should match to snapshot 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#2C2540",
+      "flex": 1,
+      "height": "100%",
+      "paddingTop": 50,
+      "width": "100%",
+    }
+  }
+>
+  <ScrollViewMock
+    style={
+      Object {
+        "backgroundColor": "#2C2540",
+        "flex": 1,
+        "height": "100%",
+        "width": "100%",
+      }
+    }
+  />
+</View>
+`;
