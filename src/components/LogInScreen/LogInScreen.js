@@ -4,6 +4,7 @@ import * as Expo from 'expo';
 import * as Google from 'expo-google-app-auth';
 import { GOOGLE_CLIENT_ID } from 'react-native-dotenv';
 import { IOS_CLIENT_ID } from 'react-native-dotenv';
+import googleLogin from '../../images/btn_google_signin_light_normal_web.png'
 
 export class LogInScreen extends Component {
   constructor() {
@@ -66,11 +67,11 @@ export class LogInScreen extends Component {
         </View>
         <View style={styles.loginButtons}>
           <TouchableOpacity 
-            style={styles.button} 
+            // style={styles.button} 
             activeOpacity={.5} 
             onPress={this.signUp}  
           >
-            <Text style={styles.buttonText}>Sign In</Text>
+            <Image source={googleLogin}/>
           </TouchableOpacity>
           <TouchableOpacity 
             style={styles.button} 
