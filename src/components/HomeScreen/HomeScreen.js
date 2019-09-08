@@ -27,7 +27,6 @@ export class HomeScreen extends Component {
     await getAllRecommendations()
       .then(data => this.props.setRecommendations(data))
     this.filterCategories()
-    console.log(this.props.allRecommendations[0])
   }
 
   filterCategories = () => {

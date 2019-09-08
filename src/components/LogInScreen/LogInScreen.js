@@ -15,7 +15,7 @@ export class LogInScreen extends Component {
     }
   }
 
-  signIn = async () => {
+  signUp = async () => {
     
     try {
       const { type, accessToken, user } = await Google.logInAsync({
@@ -33,6 +33,9 @@ export class LogInScreen extends Component {
           photoUrl: user.photoUrl
         })
         console.log(user)
+        //send all info to backend with loggedIn: true
+        //route to Recs Page
+        //load no Recommendations
       } else {
         console.log("cancelled")
       }
@@ -41,6 +44,11 @@ export class LogInScreen extends Component {
       console.log("error-last", e)
     }
   }
+
+  //signIn
+  //send googleId and loggedIn:true
+  //route to Recs page
+  //fetch user recommendations
 
   render() {
     
@@ -60,7 +68,7 @@ export class LogInScreen extends Component {
           <TouchableOpacity 
             style={styles.button} 
             activeOpacity={.5} 
-            onPress={this.signIn}  
+            onPress={this.signUp}  
           >
             <Text style={styles.buttonText}>Sign In</Text>
           </TouchableOpacity>

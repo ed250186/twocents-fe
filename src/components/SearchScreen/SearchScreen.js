@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchBarCallAPI from '../SearchBar/SearchBarCallAPI'
+import SearchResult from '../SearchResult/SearchResult'
 
 export class SearchScreen extends Component {
   constructor(){
@@ -31,6 +32,7 @@ export class SearchScreen extends Component {
             {search}
           </View>
         <ScrollView>
+          
         </ScrollView>
       </View>
     );
