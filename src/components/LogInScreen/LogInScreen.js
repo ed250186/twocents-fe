@@ -4,6 +4,7 @@ import * as Expo from 'expo';
 import * as Google from 'expo-google-app-auth';
 import { GOOGLE_CLIENT_ID } from 'react-native-dotenv';
 import { IOS_CLIENT_ID } from 'react-native-dotenv';
+import googleLogin from '../../images/btn_google_signin_light_normal_web.png'
 
 export class LogInScreen extends Component {
   constructor() {
@@ -15,7 +16,7 @@ export class LogInScreen extends Component {
     }
   }
 
-  signIn = async () => {
+  signUp = async () => {
     
     try {
       const { type, accessToken, user } = await Google.logInAsync({
@@ -33,6 +34,9 @@ export class LogInScreen extends Component {
           photoUrl: user.photoUrl
         })
         console.log(user)
+        //send all info to backend with loggedIn: true
+        //route to Recs Page
+        //load no Recommendations
       } else {
         console.log("cancelled")
       }
@@ -41,6 +45,11 @@ export class LogInScreen extends Component {
       console.log("error-last", e)
     }
   }
+
+  //signIn
+  //send email and loggedIn:true
+  //route to Recs page
+  //fetch user recommendations
 
   render() {
     
@@ -58,11 +67,11 @@ export class LogInScreen extends Component {
         </View>
         <View style={styles.loginButtons}>
           <TouchableOpacity 
-            style={styles.button} 
+            // style={styles.button} 
             activeOpacity={.5} 
-            onPress={this.signIn}  
+            onPress={this.signUp}  
           >
-            <Text style={styles.buttonText}>Sign In</Text>
+            <Image source={googleLogin}/>
           </TouchableOpacity>
           <TouchableOpacity 
             style={styles.button} 

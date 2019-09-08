@@ -7,7 +7,7 @@ import {
   TouchableOpacity, 
 } from 'react-native';
 import { LogOutPopup } from '../LogOutPopup/LogOutPopup'
-
+import { connect } from 'react-redux';
 
 export class UserScreen extends Component {
   constructor() {
@@ -25,7 +25,7 @@ export class UserScreen extends Component {
           borderBottomWidth: 0,
       },
       };
-    };
+    }; 
 
     handlePopup = (boolean) => {
       this.setState({popupVisible: boolean})
@@ -48,7 +48,7 @@ export class UserScreen extends Component {
           </View>
           <View style={styles.textBox}>
             <Text style={styles.mainText}>Recommendations</Text>
-            <Text style={styles.minorText}>from global store</Text>
+            <Text style={styles.minorText}>{this.props.allRecommendations.length}</Text>
           </View>
         </View>
         <TouchableOpacity 
@@ -78,7 +78,8 @@ const styles = StyleSheet.create({
   info: {
     paddingTop: '10%',
     height: '75%',
-    width: '100%'
+    width: '100%',
+    alignItems: 'center',
   },
   textBox: {
     display: 'flex',
@@ -125,4 +126,7 @@ const styles = StyleSheet.create({
   }
 });
 
-export default UserScreen;
+const mapStateToProps = state => ({
+  allRecommendations: state.allRecommendations
+})
+export default connect(mapStateToProps)(UserScreen);

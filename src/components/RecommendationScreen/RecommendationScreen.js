@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Image, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, Image, ScrollView, TextInput } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 
 
 export class RecommendationsScreen extends Component {
+  constructor() {
+    super()
+    this.state = {
+      notes: ''
+    }
+  }
   static navigationOptions = {
     headerStyle: {
         backgroundColor: '#2C2540',
@@ -11,10 +17,14 @@ export class RecommendationsScreen extends Component {
     },
   };
 
+  handleChange = (e) => {
+    this.setState({notes: e.nativeEvent.text})
+  }
+
   render() {
     const { navigation } = this.props;
     const recommendation = navigation.getParam('recommendation');
-    const {name, image, phone, rating, reviewCount, categories, location, price, hours} = recommendation
+    const {name, image, phone, rating, reviewCount, categories, coordinates, price, hours} = recommendation
     const categoryText = categories.join(', ')
     return(
       <ScrollView style={styles.container}>
@@ -45,16 +55,25 @@ export class RecommendationsScreen extends Component {
           </View>
           <MapView
             style={{flex: 1, height: 300, width: '100%', marginBottom: 20}}
-            region={{latitude: 39.7392, longitude: -104.9903, latitudeDelta: 0.0922, longitudeDelta: 0.0421}}
+            region={{latitude: coordinates[0], longitude: coordinates[1], latitudeDelta: 0.0922, longitudeDelta: 0.0421}}
             showsUserLocation={true}
             showsCompass={true}
           >
             <Marker 
-              coordinate={{latitude: 39.7392, longitude: -104.9903, latitudeDelta: 0.0922, longitudeDelta: 0.0421}}
+              coordinate={{latitude: coordinates[0], longitude: coordinates[1], latitudeDelta: 0.0922, longitudeDelta: 0.0421}}
             />
           </MapView>
           <View style={styles.titleInfo}>
             <Text style={styles.title}>Notes</Text>
+            <View style={styles.input}>
+              <TextInput 
+                value={this.state.notes} 
+                onChange={this.handleChange}
+                editable={true}
+                multiline={true}
+                style={{padding: 5}}
+              />
+            </View>
           </View>
           <View style={styles.yelp}>
             <Text style={styles.yelpText}>Powered by</Text>
@@ -68,8 +87,6 @@ export class RecommendationsScreen extends Component {
     )
   }
 }
-
-
 
 const styles = StyleSheet.create({
   container: {
@@ -115,5 +132,11 @@ const styles = StyleSheet.create({
     alignContent: "center",
     marginTop: 50,
     marginBottom: 50
+  },
+  input: {
+    backgroundColor: 'rgba(204, 192, 221, 0.4)',
+    width: '90%',
+    borderRadius: 10,
+    fontSize: 25
   }
 })
