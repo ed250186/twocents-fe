@@ -6,7 +6,6 @@ export class SearchBar extends Component {
     super(props)
     this.state ={
       input: '',
-      searchValues: []
     }
   }
   render() {
@@ -14,9 +13,11 @@ export class SearchBar extends Component {
       this.setState({input: enteredText})
     }  
     const handleSubmit = () => {
-      console.log(this.state.input)
       this.setState({input: ''})
+      this.props.getSearchResults(this.state.input)
     }
+
+
     return (
       <View style={styles.container}>
         <TextInput 
@@ -25,6 +26,7 @@ export class SearchBar extends Component {
           value={this.state.input}
           onChangeText={handleChange}
           onSubmitEditing={handleSubmit}
+          returnKeyType={'search' }
         />
       </View>
     );
@@ -45,5 +47,6 @@ const styles = StyleSheet.create({
     color: '#FFF',
   }
 });
+
 
 export default SearchBar;

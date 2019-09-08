@@ -2,35 +2,47 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchBarCallAPI from '../SearchBar/SearchBarCallAPI'
+import { connect } from 'react-redux';
 
 export class SearchScreen extends Component {
   constructor(){
     super();
     this.state ={
-      currentRecs: true
+      currentRecs: true,
+      searchResults: []
     }
   }
+
   render() {
     let search;
+    let noResults = (<Text>No Results Found</Text>)
+    let resultName = this.state.searchResults.map(rec => <TouchableOpacity onPress={() => this.props.navigation.navigate('RecScreen', {recommendation: rec})}><Text style={styles.searchResult}>{rec.name}</Text></TouchableOpacity>)
+
+    const getSearchResults = (value) => {
+      let searchResults = this.props.allRecommendations.filter(rec => rec.name.toUpperCase().includes(value.toUpperCase()))
+      this.setState({searchResults})
+    }
+
     if (this.state.currentRecs === true) {
-      search = <SearchBar/>;
+      search = <SearchBar getSearchResults = {getSearchResults} />;
     } else {
       search = <SearchBarCallAPI/>;
     }
     return (
       <View style={styles.container}>
         <View style={styles.toggleSearch}>
-          <TouchableOpacity onPress={() => this.setState({currentRecs: true})}>
+          <TouchableOpacity onPress={() => this.setState({currentRecs: true, searchResults: []})}>
             <Text style={ (this.state.currentRecs == false) ? styles.toggleMenu : styles.toggleMenuTrue}>MY TWOCENTS</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.setState({currentRecs: false})}>
+          <TouchableOpacity onPress={() => this.setState({currentRecs: false, searchResults: []})}>
             <Text style={ (this.state.currentRecs == false) ? styles.toggleMenuTrue : styles.toggleMenu}>NEW TWOCENTS</Text>
           </TouchableOpacity>
         </View>
           <View style={styles.searchMenu}>
             {search}
           </View>
-        <ScrollView>
+        <ScrollView style={styles.allResults}>
+          <View>{!this.state.searchResults.length ? noResults : resultName }</View>
         </ScrollView>
       </View>
     );
@@ -69,5 +81,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
     marginLeft: '15%'
+  },
+  allResults: {
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  searchResult: {
+    color: 'white',
+    fontSize: 32,
+    margin: 10
   }
 });
+
+export const mapStateToProps = state => ({
+  allRecommendations: state.allRecommendations
+})
+
+export default connect(mapStateToProps)(SearchScreen);

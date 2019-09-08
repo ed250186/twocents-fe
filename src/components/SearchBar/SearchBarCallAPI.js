@@ -5,37 +5,37 @@ export class SearchBarCallAPI extends Component {
   constructor(props) {
     super(props)
     this.state ={
-      place: '', 
-      location: ''
+      name: '', 
+      address: ''
     }
   }
 
   render() {
-    const handleChangePlace = enteredText => {
-      this.setState({place: enteredText})
+    const handleChangeName = enteredText => {
+      this.setState({name: enteredText})
     } 
     
-    const handleChangeLocation = enteredText => {
-      this.setState({location: enteredText})
+    const handleChangeAddress = enteredText => {
+      this.setState({address: enteredText})
     }
     const handleSubmit = () => {
       console.log(this.state)
-      this.setState({place: '', location: ''})
+      this.setState({name: '', address: ''})
     }
     return (
       <View style={styles.container}>
           <TextInput 
             placeholder='Enter Recommended Location'
             style={styles.input}
-            value={this.state.place}
-            onChangeText={handleChangePlace}
+            value={this.state.name}
+            onChangeText={handleChangeName}
             onSubmitEditing={handleSubmit}
           />
           <TextInput 
             placeholder='Enter City and State'
             style={styles.input}
-            value={this.state.location}
-            onChangeText={handleChangeLocation}
+            value={this.state.address}
+            onChangeText={handleChangeAddress}
             onSubmitEditing={handleSubmit}
         />
       </View>
