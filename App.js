@@ -7,13 +7,15 @@ import  { createStore }  from 'redux';
 import { connect } from 'react-redux';
 import { Icon } from 'react-native-elements';
 import { rootReducer } from './src/reducers';
-import { HomeScreen } from './src/components/HomeScreen/HomeScreen';
+import HomeScreen from './src/components/HomeScreen/HomeScreen';
 import { SearchScreen } from './src/components/SearchScreen/SearchScreen';
 import { MenuScreen } from './src/components/MenuScreen/MenuScreen';
 import { UserScreen } from "./src/components/UserScreen/UserScreen";
 import { SettingsScreen } from './src/components/SettingsScreen/SettingsScreen';
 import { AboutScreen } from './src/components/AboutScreen/AboutScreen';
 import { LogInScreen } from './src/components/LogInScreen/LogInScreen';
+import { RecommendationsScreen } from './src/components/RecommendationScreen/RecommendationScreen'
+
 
 const store = createStore(rootReducer)
 
@@ -22,21 +24,24 @@ const TabNavigator = createBottomTabNavigator({
     screen: HomeScreen,
     navigationOptions: {
       tabBarLabel: 'My TwoCents',
-      tabBarIcon: ({ tintColor }) => <Icon name="home" size={35} color={tintColor} />
+      tabBarIcon: ({ tintColor }) => <Icon name="home" size={35} color={tintColor} />,
+      gesturesEnabled: false,
     }
   },
   Search: {
     screen: SearchScreen,
     navigationOptions: {
       tabBarLabel: 'Search',
-      tabBarIcon: ({ tintColor }) => <Icon name="search" size={35} color={tintColor} />
+      tabBarIcon: ({ tintColor }) => <Icon name="search" size={35} color={tintColor} />,
+      gesturesEnabled: false,
     }
   },
   Menu: {
     screen: MenuScreen,
     navigationOptions: {
       tabBarLabel: 'Menu',
-      tabBarIcon: ({ tintColor }) => <Icon name="menu" size={35} color={tintColor} />
+      tabBarIcon: ({ tintColor }) => <Icon name="menu" size={35} color={tintColor} />,
+      gesturesEnabled: false,
     }
   },
 },
@@ -56,6 +61,7 @@ const Modal = createStackNavigator({
   User: UserScreen,
   Settings: SettingsScreen,
   About: AboutScreen,
+  RecScreen: RecommendationsScreen
 },
 {
   mode: 'modal',
@@ -67,6 +73,8 @@ const Modal = createStackNavigator({
         backgroundColor: '#2C2540',
         borderBottomWidth: 0,
     },
+    headerTintColor: '#EE933F',
+    gesturesEnabled: false,
   },
 })
 

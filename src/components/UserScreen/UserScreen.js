@@ -21,8 +21,9 @@ export class UserScreen extends Component {
       return {
         title: 'My Profile',
         headerStyle: {
-          backgroundColor: 'white',
-        },
+          backgroundColor: '#2C2540',
+          borderBottomWidth: 0,
+      },
       };
     };
 

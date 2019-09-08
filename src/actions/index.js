@@ -9,6 +9,11 @@ export const isLoggedIn = (boolean) => ({
 //   payload: boolean
 // })
 
+export const setRecommendations = (recommendation) => ({
+  type: 'RECOMMENDATIONS',
+  payload: recommendation
+})
+
 export const loadingComplete = () => ({
   type: 'LOADING_COMPLETE'
 })

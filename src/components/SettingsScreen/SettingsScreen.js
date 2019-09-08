@@ -6,8 +6,9 @@ export class SettingsScreen extends Component {
     return {
       title: 'Settings',
       headerStyle: {
-        backgroundColor: 'white',
-      },
+        backgroundColor: '#2C2540',
+        borderBottomWidth: 0,
+    },
     };
   };
 

@@ -6,8 +6,9 @@ export class AboutScreen extends Component {
     return {
       title: 'About',
       headerStyle: {
-        backgroundColor: 'white',
-      },
+        backgroundColor: '#2C2540',
+        borderBottomWidth: 0,
+    },
     };
   };
 

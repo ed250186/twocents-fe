@@ -90,8 +90,6 @@ const styles = StyleSheet.create({
     width: '90%',
     alignItems: 'center',
     marginBottom: '10%',
-    borderColor: 'red',
-    borderWidth: 1,
   },
   image: {
     height: '90%',
@@ -105,7 +103,7 @@ const styles = StyleSheet.create({
     height: '40%',
     width: '90%',
     marginBottom: '10%',
-    borderColor: 'red',
+    borderColor: '#EE933F',
     borderWidth: 1
   },
   loginButtons: {
@@ -113,8 +111,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     height: '20%',
     width: '90%',
-    borderColor: 'red',
-    borderWidth: 1
   },
   buttonText: {
     color: '#CCC0DD',
