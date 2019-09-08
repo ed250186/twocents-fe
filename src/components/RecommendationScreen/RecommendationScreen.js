@@ -1,15 +1,25 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Image, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, Image, ScrollView, TextInput } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 
 
 export class RecommendationsScreen extends Component {
+  constructor() {
+    super()
+    this.state = {
+      notes: ''
+    }
+  }
   static navigationOptions = {
     headerStyle: {
         backgroundColor: '#2C2540',
         borderBottomWidth: 0,
     },
   };
+
+  handleChange = (e) => {
+    this.setState({notes: e.nativeEvent.text})
+  }
 
   render() {
     const { navigation } = this.props;
@@ -55,6 +65,15 @@ export class RecommendationsScreen extends Component {
           </MapView>
           <View style={styles.titleInfo}>
             <Text style={styles.title}>Notes</Text>
+            <View style={styles.input}>
+              <TextInput 
+                value={this.state.notes} 
+                onChange={this.handleChange}
+                editable={true}
+                multiline={true}
+                style={{padding: 5}}
+              />
+            </View>
           </View>
           <View style={styles.yelp}>
             <Text style={styles.yelpText}>Powered by</Text>
@@ -115,5 +134,11 @@ const styles = StyleSheet.create({
     alignContent: "center",
     marginTop: 50,
     marginBottom: 50
+  },
+  input: {
+    backgroundColor: 'rgba(204, 192, 221, 0.4)',
+    width: '90%',
+    borderRadius: 10,
+    fontSize: 25
   }
 })
