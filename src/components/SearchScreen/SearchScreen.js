@@ -4,7 +4,6 @@ import SearchBar from '../SearchBar/SearchBar';
 import SearchBarCallAPI from '../SearchBar/SearchBarCallAPI'
 import { connect } from 'react-redux';
 
-
 export class SearchScreen extends Component {
   constructor(){
     super();
@@ -13,11 +12,14 @@ export class SearchScreen extends Component {
       searchResults: []
     }
   }
+
   render() {
     let search;
+    let noResults = (<Text>No Results Found</Text>)
+    let resultName = this.state.searchResults.map(rec => <TouchableOpacity onPress={() => this.props.navigation.navigate('RecScreen', {recommendation: rec})}><Text style={styles.searchResult}>{rec.name}</Text></TouchableOpacity>)
 
     const getSearchResults = (value) => {
-      let searchResults = this.props.allRecommendations.filter(rec => rec.name.includes(value))
+      let searchResults = this.props.allRecommendations.filter(rec => rec.name.toUpperCase().includes(value.toUpperCase()))
       this.setState({searchResults})
     }
 
@@ -39,8 +41,8 @@ export class SearchScreen extends Component {
           <View style={styles.searchMenu}>
             {search}
           </View>
-        <ScrollView>
-          {!this.state.searchResults.length ? <Text>No Results Found</Text> : <Text>{this.state.searchResults.map(result => result.name)}</Text>}
+        <ScrollView style={styles.allResults}>
+          <View>{!this.state.searchResults.length ? noResults : resultName }</View>
         </ScrollView>
       </View>
     );
@@ -79,6 +81,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
     marginLeft: '15%'
+  },
+  allResults: {
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  searchResult: {
+    color: 'white',
+    fontSize: 32,
+    margin: 10
   }
 });
 

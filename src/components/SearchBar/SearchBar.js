@@ -26,6 +26,7 @@ export class SearchBar extends Component {
           value={this.state.input}
           onChangeText={handleChange}
           onSubmitEditing={handleSubmit}
+          returnKeyType={'search' }
         />
       </View>
     );
