@@ -88,8 +88,6 @@ export class RecommendationsScreen extends Component {
   }
 }
 
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
