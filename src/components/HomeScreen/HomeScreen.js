@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, ScrollView } from 'react-native';
-import { getAllRecommendations } from '../../../APICalls'
+import { getAllRecommendations } from '../../../utils/APICalls'
 import { CategoryScroll } from '../CategoryScroll/CategoryScroll'
 import { connect } from 'react-redux';
 import { setRecommendations } from '../../actions/index';
@@ -27,6 +27,7 @@ export class HomeScreen extends Component {
     await getAllRecommendations()
       .then(data => this.props.setRecommendations(data))
     this.filterCategories()
+    console.log(this.props.allRecommendations[0])
   }
 
   filterCategories = () => {
