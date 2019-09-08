@@ -1,13 +1,49 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import Expo from 'expo'
+import * as Expo from 'expo';
+import * as Google from 'expo-google-app-auth';
+import { GOOGLE_CLIENT_ID } from 'react-native-dotenv';
+import { IOS_CLIENT_ID } from 'react-native-dotenv';
 
 export class LogInScreen extends Component {
   constructor() {
-    super()
+    super();
+    this.state = {
+      signedIn: false,
+      name: '',
+      image: ''
+    }
+  }
+
+  signIn = async () => {
+    
+    try {
+      const { type, accessToken, user } = await Google.logInAsync({
+        androidClientId:
+          GOOGLE_CLIENT_ID,
+        iosClientId: 
+          IOS_CLIENT_ID,
+        scopes: ["profile", "email"]
+      })
+
+      if (type === "success") {
+        this.setState({
+          signedIn: true,
+          name: user.name,
+          photoUrl: user.photoUrl
+        })
+        console.log(user)
+      } else {
+        console.log("cancelled")
+      }
+    } catch (e) {
+      console.log(e)
+      console.log("error-last", e)
+    }
   }
 
   render() {
+    
     return(
       <View style={styles.container}>
         <View style={styles.appLogo}>
@@ -24,7 +60,7 @@ export class LogInScreen extends Component {
           <TouchableOpacity 
             style={styles.button} 
             activeOpacity={.5} 
-            onPress={() => this.props.navigation.navigate( {routeName: 'Home'} )}  
+            onPress={this.signIn}  
           >
             <Text style={styles.buttonText}>Sign In</Text>
           </TouchableOpacity>
