@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, TextInput } from 'react-native';
-import { connect } from 'react-redux';
 
 export class SearchBar extends Component {
   constructor(props) {
     super(props)
     this.state ={
       input: '',
-      searchValues: []
     }
   }
   render() {
@@ -16,13 +14,10 @@ export class SearchBar extends Component {
     }  
     const handleSubmit = () => {
       this.setState({input: ''})
-      getSearchResults()
+      this.props.getSearchResults(this.state.input)
     }
 
-    const getSearchResults = () => {
-      let searchRecs = this.props.allRecommendations.filter(rec => rec.name.includes(this.state.input))
-      console.log(searchRecs)
-    }
+
     return (
       <View style={styles.container}>
         <TextInput 
@@ -52,8 +47,5 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = state => ({
-  allRecommendations: state.allRecommendations
-})
 
-export default connect(mapStateToProps)(SearchBar) ;
+export default SearchBar;

@@ -46,7 +46,7 @@ export class LogInScreen extends Component {
   }
 
   //signIn
-  //send googleId and loggedIn:true
+  //send email and loggedIn:true
   //route to Recs page
   //fetch user recommendations
 

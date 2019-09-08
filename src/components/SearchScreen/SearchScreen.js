@@ -2,29 +2,37 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchBarCallAPI from '../SearchBar/SearchBarCallAPI'
-import SearchResult from '../SearchResult/SearchResult'
+import { connect } from 'react-redux';
+
 
 export class SearchScreen extends Component {
   constructor(){
     super();
     this.state ={
-      currentRecs: true
+      currentRecs: true,
+      searchResults: []
     }
   }
   render() {
     let search;
+
+    const getSearchResults = (value) => {
+      let searchResults = this.props.allRecommendations.filter(rec => rec.name.includes(value))
+      this.setState({searchResults})
+    }
+
     if (this.state.currentRecs === true) {
-      search = <SearchBar/>;
+      search = <SearchBar getSearchResults = {getSearchResults} />;
     } else {
       search = <SearchBarCallAPI/>;
     }
     return (
       <View style={styles.container}>
         <View style={styles.toggleSearch}>
-          <TouchableOpacity onPress={() => this.setState({currentRecs: true})}>
+          <TouchableOpacity onPress={() => this.setState({currentRecs: true, searchResults: []})}>
             <Text style={ (this.state.currentRecs == false) ? styles.toggleMenu : styles.toggleMenuTrue}>MY TWOCENTS</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.setState({currentRecs: false})}>
+          <TouchableOpacity onPress={() => this.setState({currentRecs: false, searchResults: []})}>
             <Text style={ (this.state.currentRecs == false) ? styles.toggleMenuTrue : styles.toggleMenu}>NEW TWOCENTS</Text>
           </TouchableOpacity>
         </View>
@@ -32,7 +40,7 @@ export class SearchScreen extends Component {
             {search}
           </View>
         <ScrollView>
-          
+          {!this.state.searchResults.length ? <Text>No Results Found</Text> : <Text>{this.state.searchResults.map(result => result.name)}</Text>}
         </ScrollView>
       </View>
     );
@@ -73,3 +81,9 @@ const styles = StyleSheet.create({
     marginLeft: '15%'
   }
 });
+
+export const mapStateToProps = state => ({
+  allRecommendations: state.allRecommendations
+})
+
+export default connect(mapStateToProps)(SearchScreen);
