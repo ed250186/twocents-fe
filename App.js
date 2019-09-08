@@ -24,21 +24,24 @@ const TabNavigator = createBottomTabNavigator({
     screen: HomeScreen,
     navigationOptions: {
       tabBarLabel: 'My TwoCents',
-      tabBarIcon: ({ tintColor }) => <Icon name="home" size={35} color={tintColor} />
+      tabBarIcon: ({ tintColor }) => <Icon name="home" size={35} color={tintColor} />,
+      gesturesEnabled: false,
     }
   },
   Search: {
     screen: SearchScreen,
     navigationOptions: {
       tabBarLabel: 'Search',
-      tabBarIcon: ({ tintColor }) => <Icon name="search" size={35} color={tintColor} />
+      tabBarIcon: ({ tintColor }) => <Icon name="search" size={35} color={tintColor} />,
+      gesturesEnabled: false,
     }
   },
   Menu: {
     screen: MenuScreen,
     navigationOptions: {
       tabBarLabel: 'Menu',
-      tabBarIcon: ({ tintColor }) => <Icon name="menu" size={35} color={tintColor} />
+      tabBarIcon: ({ tintColor }) => <Icon name="menu" size={35} color={tintColor} />,
+      gesturesEnabled: false,
     }
   },
 },
@@ -70,7 +73,8 @@ const Modal = createStackNavigator({
         backgroundColor: '#2C2540',
         borderBottomWidth: 0,
     },
-    headerTintColor: '#EE933F'
+    headerTintColor: '#EE933F',
+    gesturesEnabled: false,
   },
 })
 
