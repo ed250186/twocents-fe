@@ -14,7 +14,7 @@ export class RecommendationsScreen extends Component {
   render() {
     const { navigation } = this.props;
     const recommendation = navigation.getParam('recommendation');
-    const {name, image, phone, rating, reviewCount, categories, location, price, hours} = recommendation
+    const {name, image, phone, rating, reviewCount, categories, coordinates, price, hours} = recommendation
     const categoryText = categories.join(', ')
     return(
       <ScrollView style={styles.container}>
@@ -45,12 +45,12 @@ export class RecommendationsScreen extends Component {
           </View>
           <MapView
             style={{flex: 1, height: 300, width: '100%', marginBottom: 20}}
-            region={{latitude: 39.7392, longitude: -104.9903, latitudeDelta: 0.0922, longitudeDelta: 0.0421}}
+            region={{latitude: coordinates[0], longitude: coordinates[1], latitudeDelta: 0.0922, longitudeDelta: 0.0421}}
             showsUserLocation={true}
             showsCompass={true}
           >
             <Marker 
-              coordinate={{latitude: 39.7392, longitude: -104.9903, latitudeDelta: 0.0922, longitudeDelta: 0.0421}}
+              coordinate={{latitude: coordinates[0], longitude: coordinates[1], latitudeDelta: 0.0922, longitudeDelta: 0.0421}}
             />
           </MapView>
           <View style={styles.titleInfo}>
