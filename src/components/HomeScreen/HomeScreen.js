@@ -5,7 +5,6 @@ import { CategoryScroll } from '../CategoryScroll/CategoryScroll'
 import { connect } from 'react-redux';
 import { setRecommendations } from '../../actions/index';
 
-
 export class HomeScreen extends Component {
   constructor(props) {
     super(props)
@@ -13,7 +12,7 @@ export class HomeScreen extends Component {
       LoggedIn: false,
       categories: []
     }
-  }
+  } 
 
   static navigationOptions = {
     headerTintColor: '#EE933F'
@@ -26,7 +25,6 @@ export class HomeScreen extends Component {
   fetchRecommendations = async () => {
     await getAllRecommendations()
       .then(data => this.props.setRecommendations(data))
-      console.log(this.props.allRecommendations[0])
     this.filterCategories()
   }
 
@@ -52,10 +50,13 @@ export class HomeScreen extends Component {
         navigation={this.props.navigation}  
       />
     ))
+    const empty = 'You have no recommendations saved yet, search for some!'
+      console.log(this.props.allRecommendations.length)
     return (
       <View style={styles.container}>
         <ScrollView  style={styles.scroll}>
-          {sideScroll}
+          {this.props.allRecommendations.length > 1 && sideScroll}
+          {this.props.allRecommendations.length < 1 && <Text style={styles.text}>{empty}</Text>}
         </ScrollView>
       </View>
     );
@@ -80,6 +81,9 @@ const styles = StyleSheet.create({
   text: {
     color: '#EE933F',
     fontSize: 30,
+    width: '100%',
+    textAlign: 'center',
+    marginTop: '70%'
   }
 });
 

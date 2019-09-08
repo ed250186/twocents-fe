@@ -25,7 +25,7 @@ export class UserScreen extends Component {
           borderBottomWidth: 0,
       },
       };
-    };
+    }; 
 
     handlePopup = (boolean) => {
       this.setState({popupVisible: boolean})
@@ -78,7 +78,8 @@ const styles = StyleSheet.create({
   info: {
     paddingTop: '10%',
     height: '75%',
-    width: '100%'
+    width: '100%',
+    alignItems: 'center',
   },
   textBox: {
     display: 'flex',
