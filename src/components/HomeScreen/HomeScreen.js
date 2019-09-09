@@ -51,7 +51,6 @@ export class HomeScreen extends Component {
       />
     ))
     const empty = 'You have no recommendations saved yet, search for some!'
-      console.log(this.props.allRecommendations.length)
     return (
       <View style={styles.container}>
         <ScrollView  style={styles.scroll}>

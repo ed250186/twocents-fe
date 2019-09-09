@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, Image, ScrollView, TextInput } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
-
+import { Icon } from 'react-native-elements';
+import { connect } from 'react-redux';
 
 export class RecommendationsScreen extends Component {
   constructor() {
     super()
     this.state = {
-      notes: ''
+      notes: '',
+      bookmark: 'bookmark-border'
     }
   }
+
+  componentDidMount() {
+    this.checkBookmark()
+  }
+
   static navigationOptions = {
     headerStyle: {
         backgroundColor: '#2C2540',
@@ -17,13 +24,21 @@ export class RecommendationsScreen extends Component {
     },
   };
 
+  checkBookmark = () => {
+    const recommendation = this.props.navigation.getParam('recommendation');
+    if(this.props.allRecommendations.includes(recommendation)) {
+      this.setState({bookmark: 'bookmark'})
+    } else {
+      this.setState({bookmark: 'bookmark-border'})
+    }
+  }
+
   handleChange = (e) => {
     this.setState({notes: e.nativeEvent.text})
   }
 
   render() {
-    const { navigation } = this.props;
-    const recommendation = navigation.getParam('recommendation');
+    const recommendation = this.props.navigation.getParam('recommendation');
     const {name, image, phone, rating, reviewCount, categories, coordinates, price, hours} = recommendation
     const categoryText = categories.join(', ')
     return(
@@ -31,14 +46,15 @@ export class RecommendationsScreen extends Component {
         <View >
           <View style={styles.titleInfo}>
             <Text style={styles.title}>{name}</Text>
-            <View>
+            <View style={styles.rating}>
               <Text style={styles.text}>
-                {reviewCount} reviews on
+                {rating} / {reviewCount} reviews on
                 <Image
                   source={require("../../images/Yelp_trademark_RGB_outline.png")}
                   style={{ width: 70, height: 30, marginTop: -5 }}
                 />
               </Text>
+              <Icon name={this.state.bookmark} size={35} color={'#EE933F'} />
             </View>
             <Text style={styles.text}>{categoryText}</Text>
           </View>
@@ -107,6 +123,11 @@ const styles = StyleSheet.create({
     height: 300,
     width: '100%',
   },
+  rating: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '95%',
+  },
   text: {
     color: '#CCC0DD',
     fontSize: 20,
@@ -140,3 +161,9 @@ const styles = StyleSheet.create({
     fontSize: 25
   }
 })
+
+const mapStateToProps = state => ({
+  allRecommendations: state.allRecommendations
+})
+
+export default connect(mapStateToProps)(RecommendationsScreen)
