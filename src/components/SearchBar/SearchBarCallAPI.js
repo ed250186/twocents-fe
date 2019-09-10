@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, TextInput } from 'react-native';
+import { connect } from 'react-redux';
 
 export class SearchBarCallAPI extends Component {
   constructor(props) {
@@ -11,6 +12,7 @@ export class SearchBarCallAPI extends Component {
   }
 
   render() {
+    console.log(this.props)
     const handleChangeName = enteredText => {
       this.setState({name: enteredText})
     } 
@@ -58,4 +60,8 @@ const styles = StyleSheet.create({
   }
 });
 
-export default SearchBarCallAPI;
+const mapStateToProps = state => ({
+  userLocation: state.userLocation
+})
+
+export default connect(mapStateToProps)(SearchBarCallAPI);
