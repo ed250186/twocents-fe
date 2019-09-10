@@ -13,18 +13,27 @@ export class SearchScreen extends Component {
     }
   }
 
+  getSearchResults = (value) => {
+    let searchResults = this.props.allRecommendations.filter(rec => rec.name.toUpperCase().includes(value.toUpperCase()))
+    this.setState({searchResults})
+  }
+
+  getYelpSearchResultsLocation = (name, address) => {
+
+  }
+
+  getYelpSearchResultsLatLong = (name) => {
+
+  }
+
   render() {
     let search;
     let noResults = (<Text>No Results Found</Text>)
     let resultName = this.state.searchResults.map(rec => <TouchableOpacity onPress={() => this.props.navigation.navigate('RecScreen', {recommendation: rec})}><Text style={styles.searchResult}>{rec.name}</Text></TouchableOpacity>)
 
-    const getSearchResults = (value) => {
-      let searchResults = this.props.allRecommendations.filter(rec => rec.name.toUpperCase().includes(value.toUpperCase()))
-      this.setState({searchResults})
-    }
 
     if (this.state.currentRecs === true) {
-      search = <SearchBar getSearchResults = {getSearchResults} />;
+      search = <SearchBar getSearchResults = {this.getSearchResults} />;
     } else {
       search = <SearchBarCallAPI/>;
     }
@@ -94,7 +103,8 @@ const styles = StyleSheet.create({
 });
 
 export const mapStateToProps = state => ({
-  allRecommendations: state.allRecommendations
+  allRecommendations: state.allRecommendations,
+  userLocation: state.userLocation
 })
 
 export default connect(mapStateToProps)(SearchScreen);

@@ -7,38 +7,48 @@ export class SearchBarCallAPI extends Component {
     super(props)
     this.state ={
       name: '', 
-      address: ''
+      address: 'Current Location',
+      error: ''
     }
   }
 
+  handleChangeName = enteredText => {
+    this.setState({name: enteredText})
+  } 
+  
+  handleChangeAddress = enteredText => {
+    this.setState({address: enteredText})
+  }
+
+  handleSubmit = () => {
+    if(!this.state.name || !this.state.address) {
+      this.setState({error: 'Missing required field'})
+    } else {
+      if(this.state.address === 'Current Location') {
+       console.log(this.props.userLocation)
+      } else {
+       console.log(this.state.address)
+      }
+    }
+    this.setState({name: '', address: 'Current Location'})
+  }
+
   render() {
-    console.log(this.props)
-    const handleChangeName = enteredText => {
-      this.setState({name: enteredText})
-    } 
-    
-    const handleChangeAddress = enteredText => {
-      this.setState({address: enteredText})
-    }
-    const handleSubmit = () => {
-      console.log(this.state)
-      this.setState({name: '', address: ''})
-    }
     return (
       <View style={styles.container}>
           <TextInput 
             placeholder='Enter Recommended Location'
             style={styles.input}
             value={this.state.name}
-            onChangeText={handleChangeName}
-            onSubmitEditing={handleSubmit}
+            onChangeText={this.handleChangeName}
+            onSubmitEditing={this.handleSubmit}
           />
           <TextInput 
             placeholder='Enter City and State'
             style={styles.input}
             value={this.state.address}
-            onChangeText={handleChangeAddress}
-            onSubmitEditing={handleSubmit}
+            onChangeText={this.handleChangeAddress}
+            onSubmitEditing={this.handleSubmit}
         />
       </View>
     );

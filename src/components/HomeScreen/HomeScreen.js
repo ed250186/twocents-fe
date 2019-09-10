@@ -19,7 +19,6 @@ export class HomeScreen extends Component {
       position => {
         const latitude = JSON.stringify(position.coords.latitude);
         const longitude = JSON.stringify(position.coords.longitude);
-        console.log('lat', latitude, 'long', longitude)
         this.props.getUserLocation([latitude, longitude])
       },
       error => Alert.alert(error.message),
@@ -64,7 +63,6 @@ export class HomeScreen extends Component {
       />
     ))
     const empty = 'You have no recommendations saved yet, search for some!'
-      console.log(this.props.allRecommendations.length)
     return (
       <View style={styles.container}>
         <ScrollView  style={styles.scroll}>
