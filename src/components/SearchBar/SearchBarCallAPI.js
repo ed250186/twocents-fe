@@ -27,7 +27,7 @@ export class SearchBarCallAPI extends Component {
       if(this.state.address === 'Current Location') {
         this.props.searchYelpLatLong(this.state.name, this.props.userLocation[0], this.props.userLocation[1])
       } else {
-        this.props.searchYelpLatLong(this.state.name, this.state.address)
+        this.props.searchYelpLocation(this.state.name, this.state.address)
       }
     }
     this.setState({name: '', address: 'Current Location'})

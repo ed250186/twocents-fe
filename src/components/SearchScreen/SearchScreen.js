@@ -31,7 +31,7 @@ export class SearchScreen extends Component {
         return response.json()
       }
     })
-    .then(recs => console.log(recs))
+    .then(recs => this.setState({searchResults:recs.businesses}))
     .catch(error => this.setState({error}))
   }
 
@@ -49,7 +49,6 @@ export class SearchScreen extends Component {
   }
 
   render() {
-    console.log(this.state)
     let search;
     let noResults = (<Text>No Results Found</Text>)
     let resultName = this.state.searchResults.map(rec => <TouchableOpacity onPress={() => this.props.navigation.navigate('RecScreen', {recommendation: rec})}><Text style={styles.searchResult}>{rec.name}</Text></TouchableOpacity>)
