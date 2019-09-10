@@ -51,8 +51,8 @@ export class SearchScreen extends Component {
   render() {
     let search;
     let noResults = (<Text>No Results Found</Text>)
-    let resultName = this.state.searchResults.map(rec => <TouchableOpacity onPress={() => this.props.navigation.navigate('RecScreen', {recommendation: rec})}><Text style={styles.searchResult}>{rec.name}</Text></TouchableOpacity>)
-
+    let resultName = this.state.searchResults.map(rec => 
+    <TouchableOpacity onPress={() => this.props.navigation.navigate('RecScreen', {recommendation: rec})}><Text style={styles.searchResult}>{rec.name}</Text></TouchableOpacity>)
 
     if (this.state.currentRecs === true) {
       search = <SearchBar getSearchResults = {this.getSearchResults} />;
