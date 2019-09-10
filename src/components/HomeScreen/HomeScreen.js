@@ -29,6 +29,7 @@ export class HomeScreen extends Component {
   }
 
   filterCategories = () => {
+    console.log('from home', this.props.allRecommendations.length)
     const categoryList = this.props.allRecommendations.reduce((acc, rec) => {
       rec.categories.forEach(cat => {
         if(!acc[cat]) {
@@ -42,7 +43,7 @@ export class HomeScreen extends Component {
   }
   
   render() {
-    console.log('home screen')
+    // console.log('from home', this.props.allRecommendations.length)
     const sideScroll = Object.entries(this.state.categories).map((cat, key) => (
       <CategoryScroll 
         category={cat[0]} 

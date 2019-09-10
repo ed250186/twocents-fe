@@ -4,6 +4,7 @@ import MapView, { Marker } from 'react-native-maps';
 import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { HeaderBackButton } from 'react-navigation-stack';
+import { updateRecommendations } from '../../actions/index'
 
 export class RecommendationsScreen extends Component {
   constructor() {
@@ -21,9 +22,13 @@ export class RecommendationsScreen extends Component {
 
   componentDidMount() {
     this.checkBookmark()
+    this.props.navigation.setParams({
+      recState: this
+     })
   }
 
   static navigationOptions = ({navigation}) => {
+    const navThis = navigation.state.params.recState
     return{
     headerStyle: {
         backgroundColor: '#2C2540',
@@ -36,6 +41,13 @@ export class RecommendationsScreen extends Component {
       tintColor= '#EE933F'
       headerBackValue= 'Back'
       onPress={()=>{
+        console.log(navThis.props.allRecommendations.length)
+        // const newRecs = navThis.props.allRecommendations.filter(rec => {
+        //   return rec !== navThis.state.recommendation
+        // })
+        // navThis.props.updateRecommendations(newRecs)
+        navThis.handleUpdateRecommendations()
+        console.log(navThis.props.allRecommendations.length)
         navigation.navigate({routeName: 'Home'} )
       }}/>
     )
@@ -59,20 +71,21 @@ export class RecommendationsScreen extends Component {
   }
 
   handleUpdateRecommendations = () => {
-    if(this.state.bookmark === 'bookmark-border') {
-      // const newRecs = [this.props.allRecommendations, this.state.recommendation]
-      // this.props.updateRecommendations(newRecs)
-
+    const isSaved = this.props.allRecommendations.includes(this.state.recommendation)
+    if(this.state.bookmark === 'bookmark' && !isSaved) {
+      const newRecs = [this.props.allRecommendations, this.state.recommendation]
+      this.props.updateRecommendations(newRecs)
+      console.log('Add')
       //toggle bookmark to bookmark and send post request
-    } else {
-      // const newRecs = this.props.allRecommendations.filter(rec => {
-      //   return !this.state.recommendation
-      // })
-      // this.props.updateRecommendations(newRecs)
-
+    } else if(this.state.bookmark === 'bookmark-border' && isSaved) {
+      const newRecs = this.props.allRecommendations.filter(rec => {
+        return rec !== this.state.recommendation
+      })
+      this.props.updateRecommendations(newRecs)
+      console.log('delete')
       //toggle bookmark to bookmark-border and send delete request
     }
-    this.checkBookmark()
+    // this.checkBookmark()
   }
 
   handleChange = (e) => {
