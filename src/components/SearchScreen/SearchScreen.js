@@ -52,7 +52,9 @@ export class SearchScreen extends Component {
     let search;
     let noResults = (<Text>No Results Found</Text>)
     let resultName = this.state.searchResults.map(rec => 
-    <TouchableOpacity onPress={() => this.props.navigation.navigate('RecScreen', {recommendation: rec})}><Text style={styles.searchResult}>{rec.name}</Text></TouchableOpacity>)
+    <TouchableOpacity onPress={() => {
+      console.log(rec)
+      return this.props.navigation.navigate('RecScreen', {recommendation: rec})}}><Text style={styles.searchResult}>{rec.name}</Text></TouchableOpacity>)
 
     if (this.state.currentRecs === true) {
       search = <SearchBar getSearchResults = {this.getSearchResults} />;

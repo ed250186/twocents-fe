@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, Image, ScrollView, TextInput } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
+import { Rating } from 'react-native-ratings';
+const star = require('../../images/star-regular.png')
 
 
 export class RecommendationsScreen extends Component {
@@ -31,9 +33,9 @@ export class RecommendationsScreen extends Component {
         <View >
           <View style={styles.titleInfo}>
             <Text style={styles.title}>{name}</Text>
-            <View>
+            <View style={styles.ratingSection}>
               <Text style={styles.text}>
-                {reviewCount} reviews on
+                {rating}/5 ({reviewCount})
                 <Image
                   source={require("../../images/Yelp_trademark_RGB_outline.png")}
                   style={{ width: 70, height: 30, marginTop: -5 }}
@@ -138,5 +140,9 @@ const styles = StyleSheet.create({
     width: '90%',
     borderRadius: 10,
     fontSize: 25
+  },
+  ratingSection: {
+    display: 'flex',
+    flexDirection: 'row'
   }
 })

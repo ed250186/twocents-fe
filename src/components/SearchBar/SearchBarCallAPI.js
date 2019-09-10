@@ -21,6 +21,7 @@ export class SearchBarCallAPI extends Component {
   }
 
   handleSubmit = () => {
+    console.log(this.props)
     if(!this.state.name || !this.state.address) {
       this.setState({error: 'Missing required field'})
     } else {
