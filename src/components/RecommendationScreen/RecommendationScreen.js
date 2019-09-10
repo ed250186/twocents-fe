@@ -50,6 +50,14 @@ export class RecommendationsScreen extends Component {
     }
   }
 
+  toggleBookmark = () => {
+    if(this.state.bookmark === 'bookmark-border') {
+      this.setState({bookmark: 'bookmark'})
+    } else {
+      this.setState({bookmark: 'bookmark-border'})
+    }
+  }
+
   handleUpdateRecommendations = () => {
     if(this.state.bookmark === 'bookmark-border') {
       // const newRecs = [this.props.allRecommendations, this.state.recommendation]
@@ -91,7 +99,7 @@ export class RecommendationsScreen extends Component {
                 name={this.state.bookmark} 
                 size={35} 
                 color={'#EE933F'} 
-                onPress={this.handleUpdateRecommendations}  
+                onPress={this.toggleBookmark}  
               />
             </View>
             <Text style={styles.text}>{categoryText}</Text>
