@@ -39,13 +39,7 @@ export class RecommendationsScreen extends Component {
     headerLeft:(
       <HeaderBackButton 
       tintColor= '#EE933F'
-      headerBackValue= 'Back'
       onPress={()=>{
-        console.log(navThis.props.allRecommendations.length)
-        // const newRecs = navThis.props.allRecommendations.filter(rec => {
-        //   return rec !== navThis.state.recommendation
-        // })
-        // navThis.props.updateRecommendations(newRecs)
         navThis.handleUpdateRecommendations()
         console.log(navThis.props.allRecommendations.length)
         navigation.navigate({routeName: 'Home'} )

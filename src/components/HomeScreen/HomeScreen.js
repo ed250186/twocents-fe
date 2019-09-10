@@ -43,7 +43,6 @@ export class HomeScreen extends Component {
   }
   
   render() {
-    // console.log('from home', this.props.allRecommendations.length)
     const sideScroll = Object.entries(this.state.categories).map((cat, key) => (
       <CategoryScroll 
         category={cat[0]} 
@@ -71,7 +70,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: '100%',
     width: '100%',
-    
   },
   scroll: {
     flex: 1,
