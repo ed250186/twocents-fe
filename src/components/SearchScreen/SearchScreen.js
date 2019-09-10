@@ -3,13 +3,15 @@ import { Text, View, StyleSheet, TouchableOpacity, ScrollView } from 'react-nati
 import SearchBar from '../SearchBar/SearchBar';
 import SearchBarCallAPI from '../SearchBar/SearchBarCallAPI'
 import { connect } from 'react-redux';
+import { fetchSearchYelpLatLong } from '../../../utils/APICalls'
 
 export class SearchScreen extends Component {
   constructor(){
     super();
     this.state ={
       currentRecs: true,
-      searchResults: []
+      searchResults: [],
+      error: ''
     }
   }
 
@@ -18,15 +20,36 @@ export class SearchScreen extends Component {
     this.setState({searchResults})
   }
 
-  getYelpSearchResultsLocation = (name, address) => {
+  
 
+  getYelpSearchResultsLocation = async (name, address) => {
+    await fetch(`https://twocents-be.herokuapp.com/api/v1/search/yelp_search/?term=${name}&location=${address}`)
+    .then(response => {
+      if(!response.ok) {
+        return error => this.setState({error});
+      } else {
+        return response.json()
+      }
+    })
+    .then(recs => console.log(recs))
+    .catch(error => this.setState({error}))
   }
 
-  getYelpSearchResultsLatLong = (name) => {
-
+  getYelpSearchResultsLatLong = async (name, lat, long) => {
+    await fetch(`https://twocents-be.herokuapp.com/api/v1/search/yelp_search/?term=${name}&latitude=${lat}&longitude=${long}`)
+    .then(response => {
+      if(!response.ok) {
+        return error => this.setState({error});
+      } else {
+        return response.json()
+      }
+    })
+    .then(recs => this.setState({searchResults:recs.businesses}))
+    .catch(error => this.setState({error}))
   }
 
   render() {
+    console.log(this.state)
     let search;
     let noResults = (<Text>No Results Found</Text>)
     let resultName = this.state.searchResults.map(rec => <TouchableOpacity onPress={() => this.props.navigation.navigate('RecScreen', {recommendation: rec})}><Text style={styles.searchResult}>{rec.name}</Text></TouchableOpacity>)
@@ -35,7 +58,7 @@ export class SearchScreen extends Component {
     if (this.state.currentRecs === true) {
       search = <SearchBar getSearchResults = {this.getSearchResults} />;
     } else {
-      search = <SearchBarCallAPI/>;
+      search = <SearchBarCallAPI searchYelpLatLong={this.getYelpSearchResultsLatLong} searchYelpLocation={this.getYelpSearchResultsLocation}/>;
     }
     return (
       <View style={styles.container}>

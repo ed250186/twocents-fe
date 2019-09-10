@@ -25,9 +25,9 @@ export class SearchBarCallAPI extends Component {
       this.setState({error: 'Missing required field'})
     } else {
       if(this.state.address === 'Current Location') {
-       console.log(this.props.userLocation)
+        this.props.searchYelpLatLong(this.state.name, this.props.userLocation[0], this.props.userLocation[1])
       } else {
-       console.log(this.state.address)
+        this.props.searchYelpLatLong(this.state.name, this.state.address)
       }
     }
     this.setState({name: '', address: 'Current Location'})
@@ -42,6 +42,7 @@ export class SearchBarCallAPI extends Component {
             value={this.state.name}
             onChangeText={this.handleChangeName}
             onSubmitEditing={this.handleSubmit}
+            returnKeyType={ 'search' }
           />
           <TextInput 
             placeholder='Enter City and State'
@@ -49,6 +50,7 @@ export class SearchBarCallAPI extends Component {
             value={this.state.address}
             onChangeText={this.handleChangeAddress}
             onSubmitEditing={this.handleSubmit}
+            returnKeyType={ 'search' }
         />
       </View>
     );
