@@ -1,42 +1,57 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, TextInput } from 'react-native';
+import { connect } from 'react-redux';
 
 export class SearchBarCallAPI extends Component {
   constructor(props) {
     super(props)
     this.state ={
       name: '', 
-      address: ''
+      address: 'Current Location',
+      error: ''
     }
   }
 
+  handleChangeName = enteredText => {
+    this.setState({name: enteredText})
+  } 
+  
+  handleChangeAddress = enteredText => {
+    this.setState({address: enteredText})
+  }
+
+  handleSubmit = () => {
+    console.log(this.props)
+    if(!this.state.name || !this.state.address) {
+      this.setState({error: 'Missing required field'})
+    } else {
+      if(this.state.address === 'Current Location') {
+        this.props.searchYelpLatLong(this.state.name, this.props.userLocation[0], this.props.userLocation[1])
+      } else {
+        this.props.searchYelpLocation(this.state.name, this.state.address)
+      }
+    }
+    this.setState({name: '', address: 'Current Location'})
+  }
+
   render() {
-    const handleChangeName = enteredText => {
-      this.setState({name: enteredText})
-    } 
-    
-    const handleChangeAddress = enteredText => {
-      this.setState({address: enteredText})
-    }
-    const handleSubmit = () => {
-      console.log(this.state)
-      this.setState({name: '', address: ''})
-    }
     return (
       <View style={styles.container}>
           <TextInput 
             placeholder='Enter Recommended Location'
             style={styles.input}
             value={this.state.name}
-            onChangeText={handleChangeName}
-            onSubmitEditing={handleSubmit}
+            onChangeText={this.handleChangeName}
+            onSubmitEditing={this.handleSubmit}
+            returnKeyType={ 'search' }
           />
           <TextInput 
             placeholder='Enter City and State'
             style={styles.input}
             value={this.state.address}
-            onChangeText={handleChangeAddress}
-            onSubmitEditing={handleSubmit}
+            onChangeText={this.handleChangeAddress}
+            onSubmitEditing={this.handleSubmit}
+            returnKeyType={ 'search' }
         />
       </View>
     );
@@ -58,4 +73,8 @@ const styles = StyleSheet.create({
   }
 });
 
-export default SearchBarCallAPI;
+const mapStateToProps = state => ({
+  userLocation: state.userLocation
+})
+
+export default connect(mapStateToProps)(SearchBarCallAPI);

@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, ScrollView } from 'react-native';
 import { getAllRecommendations } from '../../../utils/APICalls'
 import { CategoryScroll } from '../CategoryScroll/CategoryScroll'
 import { connect } from 'react-redux';
-import { setRecommendations } from '../../actions/index';
+import { setRecommendations, getUserLocation } from '../../actions/index';
 
 export class HomeScreen extends Component {
   constructor(props) {
@@ -12,7 +12,19 @@ export class HomeScreen extends Component {
       LoggedIn: false,
       categories: []
     }
-  } 
+  }
+  
+  componentWillMount(){
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        const latitude = JSON.stringify(position.coords.latitude);
+        const longitude = JSON.stringify(position.coords.longitude);
+        this.props.getUserLocation([latitude, longitude])
+      },
+      error => Alert.alert(error.message),
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+    );
+  };
 
   static navigationOptions = {
     headerTintColor: '#EE933F'
@@ -87,11 +99,13 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => ({
-  allRecommendations: state.allRecommendations
+  allRecommendations: state.allRecommendations,
+  userLocation: state.userLocation
 })
 
 const mapDispatchToProps = dispatch => ({
-  setRecommendations: (cat) => dispatch(setRecommendations(cat))
+  setRecommendations: (cat) => dispatch(setRecommendations(cat)),
+  getUserLocation: (location) => dispatch(getUserLocation(location))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)

@@ -26,3 +26,8 @@ export const hasErrored = message => ({
 export const clearError = () => ({
   type: 'CLEAR_MESSAGE'
 })
+
+export const getUserLocation = location => ({
+  type: 'GET_USER_LOCATION',
+  location
+})

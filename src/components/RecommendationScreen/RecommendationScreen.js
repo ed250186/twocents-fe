@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Image, ScrollView, TextInput, Button } from 'react-native';
+import { Text, View, StyleSheet, Image, ScrollView, TextInput } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { HeaderBackButton } from 'react-navigation-stack';
 import { updateRecommendations } from '../../actions/index'
+
 
 export class RecommendationsScreen extends Component {
   constructor() {
@@ -94,9 +95,9 @@ export class RecommendationsScreen extends Component {
         <View >
           <View style={styles.titleInfo}>
             <Text style={styles.title}>{name}</Text>
-            <View style={styles.rating}>
+            <View style={styles.ratingSection}>
               <Text style={styles.text}>
-                {rating} / {reviewCount} reviews on
+                {rating}/5 ({reviewCount})
                 <Image
                   source={require("../../images/Yelp_trademark_RGB_outline.png")}
                   style={{ width: 70, height: 30, marginTop: -5 }}
@@ -212,6 +213,12 @@ const styles = StyleSheet.create({
     width: '90%',
     borderRadius: 10,
     fontSize: 25
+  },
+  ratingSection: {
+    width: '95%',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   }
 })
 
