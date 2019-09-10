@@ -34,9 +34,6 @@ export class LogInScreen extends Component {
           photoUrl: user.photoUrl
         })
         console.log(user)
-        //send all info to backend with loggedIn: true
-        //route to Recs Page
-        //load no Recommendations
       } else {
         console.log("cancelled")
       }
@@ -45,11 +42,6 @@ export class LogInScreen extends Component {
       console.log("error-last", e)
     }
   }
-
-  //signIn
-  //send email and loggedIn:true
-  //route to Recs page
-  //fetch user recommendations
 
   render() {
     

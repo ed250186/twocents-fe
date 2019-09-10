@@ -19,3 +19,17 @@ export const searchRecommendations = async searchValue => {
   .then(() => this.props.loadingComplete())
   .catch(error => this.props.hasErrored(error.message));
 }
+
+export const fetchSearchYelpLatLong = async (name, lat, long) => {
+  await fetch(`https://twocents-be.herokuapp.com/api/v1/search/yelp_search/?term=${name}&latitude=${lat}&longitude=${long}`)
+    .then(response => {
+      if(!response.ok) {
+        return error => this.props.hasErrored(error.message);
+      } else {
+        return response.json()
+      }
+    })
+    .then(recs => recs.businesses)
+    .then(() => this.props.loadingComplete())
+    .catch(error => this.props.hasErrored(error.message))
+}

@@ -1,44 +1,114 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, Image, ScrollView, TextInput } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
+import { Icon } from 'react-native-elements';
+import { connect } from 'react-redux';
+import { HeaderBackButton } from 'react-navigation-stack';
+import { updateRecommendations } from '../../actions/index'
 
 
 export class RecommendationsScreen extends Component {
   constructor() {
     super()
     this.state = {
-      notes: ''
+      notes: '',
+      bookmark: 'bookmark-border',
+      recommendation: {}
     }
   }
-  static navigationOptions = {
+
+  componentWillMount() {
+    this.setState({recommendation: this.props.navigation.getParam('recommendation')})
+  }
+
+  componentDidMount() {
+    this.checkBookmark()
+    this.props.navigation.setParams({
+      recState: this
+     })
+  }
+
+  static navigationOptions = ({navigation}) => {
+    const navThis = navigation.state.params.recState
+    return{
     headerStyle: {
         backgroundColor: '#2C2540',
         borderBottomWidth: 0,
+        headerTintStyle: '#EE933F',
+        headerBackTitle: 'Back'
     },
+    headerLeft:(
+      <HeaderBackButton 
+      tintColor= '#EE933F'
+      onPress={()=>{
+        navThis.handleUpdateRecommendations()
+        console.log(navThis.props.allRecommendations.length)
+        navigation.navigate({routeName: 'Home'} )
+      }}/>
+    )
+    }
   };
+
+  checkBookmark = () => {
+    if(this.props.allRecommendations.includes(this.state.recommendation)) {
+      this.setState({bookmark: 'bookmark'})
+    } else {
+      this.setState({bookmark: 'bookmark-border'})
+    }
+  }
+
+  toggleBookmark = () => {
+    if(this.state.bookmark === 'bookmark-border') {
+      this.setState({bookmark: 'bookmark'})
+    } else {
+      this.setState({bookmark: 'bookmark-border'})
+    }
+  }
+
+  handleUpdateRecommendations = () => {
+    const isSaved = this.props.allRecommendations.includes(this.state.recommendation)
+    if(this.state.bookmark === 'bookmark' && !isSaved) {
+      const newRecs = [this.props.allRecommendations, this.state.recommendation]
+      this.props.updateRecommendations(newRecs)
+      console.log('Add')
+      //toggle bookmark to bookmark and send post request
+    } else if(this.state.bookmark === 'bookmark-border' && isSaved) {
+      const newRecs = this.props.allRecommendations.filter(rec => {
+        return rec !== this.state.recommendation
+      })
+      this.props.updateRecommendations(newRecs)
+      console.log('delete')
+      //toggle bookmark to bookmark-border and send delete request
+    }
+    // this.checkBookmark()
+  }
 
   handleChange = (e) => {
     this.setState({notes: e.nativeEvent.text})
   }
 
   render() {
-    const { navigation } = this.props;
-    const recommendation = navigation.getParam('recommendation');
-    const {name, image, phone, rating, reviewCount, categories, coordinates, price, hours} = recommendation
+    const {name, image, phone, rating, reviewCount, categories, coordinates, price, hours} = this.state.recommendation
     const categoryText = categories.join(', ')
     return(
       <ScrollView style={styles.container}>
         <View >
           <View style={styles.titleInfo}>
             <Text style={styles.title}>{name}</Text>
-            <View>
+            <View style={styles.ratingSection}>
               <Text style={styles.text}>
-                {reviewCount} reviews on
+                {rating}/5 ({reviewCount})
                 <Image
                   source={require("../../images/Yelp_trademark_RGB_outline.png")}
                   style={{ width: 70, height: 30, marginTop: -5 }}
                 />
               </Text>
+              <Icon 
+                name={this.state.bookmark} 
+                size={35} 
+                color={'#EE933F'} 
+                onPress={this.toggleBookmark}  
+              />
             </View>
             <Text style={styles.text}>{categoryText}</Text>
           </View>
@@ -107,6 +177,11 @@ const styles = StyleSheet.create({
     height: 300,
     width: '100%',
   },
+  rating: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '95%',
+  },
   text: {
     color: '#CCC0DD',
     fontSize: 20,
@@ -138,5 +213,21 @@ const styles = StyleSheet.create({
     width: '90%',
     borderRadius: 10,
     fontSize: 25
+  },
+  ratingSection: {
+    width: '95%',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   }
 })
+
+const mapStateToProps = state => ({
+  allRecommendations: state.allRecommendations
+})
+
+const mapDispatchToProps = dispatch => ({
+  updateRecommendations: (rec) => dispatch(updateRecommendations(rec))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecommendationsScreen)
