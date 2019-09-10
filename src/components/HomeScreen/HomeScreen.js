@@ -42,6 +42,7 @@ export class HomeScreen extends Component {
   }
   
   render() {
+    console.log('home screen')
     const sideScroll = Object.entries(this.state.categories).map((cat, key) => (
       <CategoryScroll 
         category={cat[0]} 
@@ -90,8 +91,8 @@ const mapStateToProps = state => ({
   allRecommendations: state.allRecommendations
 })
 
-const MapDispatchToProps = dispatch => ({
+const mapDispatchToProps = dispatch => ({
   setRecommendations: (cat) => dispatch(setRecommendations(cat))
 })
 
-export default connect(mapStateToProps, MapDispatchToProps)(HomeScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)

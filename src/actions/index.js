@@ -4,10 +4,10 @@ export const isLoggedIn = (boolean) => ({
   payload: boolean
 })
 
-// export const loggedOut = (boolean) => ({
-//   type: 'LOGGED_OUT',
-//   payload: boolean
-// })
+export const updateRecommendations = (recommendation) => ({
+  type: 'UPDATE_RECOMMENDATIONS',
+  payload: recommendation
+})
 
 export const setRecommendations = (recommendation) => ({
   type: 'RECOMMENDATIONS',

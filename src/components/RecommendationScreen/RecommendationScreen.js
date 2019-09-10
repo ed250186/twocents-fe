@@ -9,8 +9,13 @@ export class RecommendationsScreen extends Component {
     super()
     this.state = {
       notes: '',
-      bookmark: 'bookmark-border'
+      bookmark: 'bookmark-border',
+      recommendation: {}
     }
+  }
+
+  componentWillMount() {
+    this.setState({recommendation: this.props.navigation.getParam('recommendation')})
   }
 
   componentDidMount() {
@@ -25,12 +30,28 @@ export class RecommendationsScreen extends Component {
   };
 
   checkBookmark = () => {
-    const recommendation = this.props.navigation.getParam('recommendation');
-    if(this.props.allRecommendations.includes(recommendation)) {
+    if(this.props.allRecommendations.includes(this.state.recommendation)) {
       this.setState({bookmark: 'bookmark'})
     } else {
       this.setState({bookmark: 'bookmark-border'})
     }
+  }
+
+  handleUpdateRecommendations = () => {
+    if(this.state.bookmark === 'bookmark-border') {
+      // const newRecs = [this.props.allRecommendations, this.state.recommendation]
+      // this.props.updateRecommendations(newRecs)
+
+      //toggle bookmark to bookmark and send post request
+    } else {
+      // const newRecs = this.props.allRecommendations.filter(rec => {
+      //   return !this.state.recommendation
+      // })
+      // this.props.updateRecommendations(newRecs)
+
+      //toggle bookmark to bookmark-border and send delete request
+    }
+    this.checkBookmark()
   }
 
   handleChange = (e) => {
@@ -38,8 +59,7 @@ export class RecommendationsScreen extends Component {
   }
 
   render() {
-    const recommendation = this.props.navigation.getParam('recommendation');
-    const {name, image, phone, rating, reviewCount, categories, coordinates, price, hours} = recommendation
+    const {name, image, phone, rating, reviewCount, categories, coordinates, price, hours} = this.state.recommendation
     const categoryText = categories.join(', ')
     return(
       <ScrollView style={styles.container}>
@@ -54,7 +74,12 @@ export class RecommendationsScreen extends Component {
                   style={{ width: 70, height: 30, marginTop: -5 }}
                 />
               </Text>
-              <Icon name={this.state.bookmark} size={35} color={'#EE933F'} />
+              <Icon 
+                name={this.state.bookmark} 
+                size={35} 
+                color={'#EE933F'} 
+                onPress={this.handleUpdateRecommendations}  
+              />
             </View>
             <Text style={styles.text}>{categoryText}</Text>
           </View>
@@ -166,4 +191,8 @@ const mapStateToProps = state => ({
   allRecommendations: state.allRecommendations
 })
 
-export default connect(mapStateToProps)(RecommendationsScreen)
+const mapDispatchToProps = dispatch => ({
+  updateRecommendations: (rec) => dispatch(updateRecommendations(rec))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecommendationsScreen)
