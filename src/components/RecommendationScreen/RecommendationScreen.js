@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Image, ScrollView, TextInput } from 'react-native';
+import { Text, View, StyleSheet, Image, ScrollView, TextInput, Button } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
+import { HeaderBackButton } from 'react-navigation-stack';
 
 export class RecommendationsScreen extends Component {
   constructor() {
@@ -22,11 +23,23 @@ export class RecommendationsScreen extends Component {
     this.checkBookmark()
   }
 
-  static navigationOptions = {
+  static navigationOptions = ({navigation}) => {
+    return{
     headerStyle: {
         backgroundColor: '#2C2540',
         borderBottomWidth: 0,
+        headerTintStyle: '#EE933F',
+        headerBackTitle: 'Back'
     },
+    headerLeft:(
+      <HeaderBackButton 
+      tintColor= '#EE933F'
+      headerBackValue= 'Back'
+      onPress={()=>{
+        navigation.navigate({routeName: 'Home'} )
+      }}/>
+    )
+    }
   };
 
   checkBookmark = () => {
