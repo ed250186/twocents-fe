@@ -22,6 +22,7 @@
     "@babel/core": "^7.6.0",
     "babel-jest": "^24.9.0",
     "expo": "^34.0.1",
+    "expo-cli": "^3.0.10",
     "expo-google-app-auth": "^6.0.0",
     "jest": "^24.9.0",
     "react": "16.8.3",
