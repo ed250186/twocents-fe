@@ -4,9 +4,10 @@ import * as Expo from 'expo';
 import * as Google from 'expo-google-app-auth';
 import { GOOGLE_CLIENT_ID } from 'react-native-dotenv';
 import { IOS_CLIENT_ID } from 'react-native-dotenv';
-import googleLogin from '../../images/btn_google_signin_light_normal_web.png'
+import googleLogin from '../../images/Google-SignIn.png';
+import googleSignUp from '../../images/Google-SignUP.png'
 import { connect } from 'react-redux';
-import { isLoggedIn } from '../../actions'
+import { isLoggedIn, setRecommendations } from '../../actions'
 
 export class LogInScreen extends Component {
   constructor() {
@@ -34,7 +35,39 @@ export class LogInScreen extends Component {
           email: user.email,
           photoUrl: user.photoUrl
         })
-        fetch(`https://twocents-be.herokuapp.com/api/v1/users/login?p=${user.id}`)
+        fetch(`https://twocents-be.herokuapp.com/api/v1/users/signup?p=${user.id}`)
+        .then(response => response.json())
+        .then(data => console.log(data))
+        this.props.navigation.navigate( {routeName: 'Home'} )
+      } else {
+        this.setState({error})
+      }
+    } catch (e) {
+      this.setState({error: e})
+    }
+  }
+
+  signIn = async () => {
+    
+    try {
+      const { type, accessToken, user } = await Google.logInAsync({
+        androidClientId:
+          GOOGLE_CLIENT_ID,
+        iosClientId: 
+          IOS_CLIENT_ID,
+        scopes: ["profile", "email"]
+      })
+
+      if (type === "success") {
+        this.props.isLoggedIn({
+          loggedIn: true,
+          name: user.name,
+          email: user.email,
+          photoUrl: user.photoUrl
+        })
+        fetch(`https://twocents-be.herokuapp.com/api/v1/users/signin?p=${user.id}`)
+        .then(response => response.json())
+        .then(data => console.log(data))
         this.props.navigation.navigate( {routeName: 'Home'} )
       } else {
         this.setState({error})
@@ -45,6 +78,8 @@ export class LogInScreen extends Component {
   }
 
   render() {
+    console.log('recs', this.props.allRecommendations)
+
     return(
       <View style={styles.container}>
         <View style={styles.appLogo}>
@@ -59,18 +94,16 @@ export class LogInScreen extends Component {
         </View>
         <View style={styles.loginButtons}>
           <TouchableOpacity 
-            // style={styles.button} 
             activeOpacity={.5} 
-            onPress={this.signUp}  
+            onPress={this.signIn}  
           >
-            <Image source={googleLogin}/>
+            <Image source={googleLogin} style={{width: 270, height: 50}}/>
           </TouchableOpacity>
           <TouchableOpacity 
-            style={styles.button} 
             activeOpacity={.5} 
             onPress={() => this.props.navigation.navigate( {routeName: 'Home'} )}  
           >
-            <Text style={styles.buttonText}>Sign Up</Text>
+            <Image source={googleSignUp} style={{width: 270, height: 50}}/>
           </TouchableOpacity>
         </View>
       </View>
@@ -112,26 +145,16 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     height: '20%',
     width: '90%',
-  },
-  buttonText: {
-    color: '#CCC0DD',
-    fontSize: 25,
-  },
-  button: {
-    backgroundColor: 'rgba(204, 192, 221, 0.14)',
-    borderWidth: 1,
-    borderColor: '#EE933F',
-    borderRadius: 10,
-    width: '100%',
-    alignItems: 'center',
-    shadowOffset:{  width: 5,  height: 10,  },
-    shadowColor: 'black',
-    shadowOpacity: 1.0,
-  },
+  }
+})
+
+export const mapStateToProps = state => ({
+  allRecommendations: state.allRecommendations
 })
 
 export const mapDispatchToProps = dispatch => ({
-  isLoggedIn: (user) => dispatch(isLoggedIn(user))
+  isLoggedIn: (user) => dispatch(isLoggedIn(user)),
+  setRecommendations: (recs) => dispatch(setRecommendations(recs))
 })
 
 export default connect(null, mapDispatchToProps)(LogInScreen)
