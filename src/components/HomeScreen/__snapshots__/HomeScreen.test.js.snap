@@ -8,7 +8,6 @@ exports[`HomeScreen should match to snapshot 1`] = `
       "backgroundColor": "#2C2540",
       "flex": 1,
       "height": "100%",
-      "paddingTop": 50,
       "width": "100%",
     }
   }
@@ -22,6 +21,20 @@ exports[`HomeScreen should match to snapshot 1`] = `
         "width": "100%",
       }
     }
-  />
+  >
+    <Text
+      style={
+        Object {
+          "color": "#EE933F",
+          "fontSize": 30,
+          "marginTop": "70%",
+          "textAlign": "center",
+          "width": "100%",
+        }
+      }
+    >
+      You have no recommendations saved yet, search for some!
+    </Text>
+  </ScrollViewMock>
 </View>
 `;
