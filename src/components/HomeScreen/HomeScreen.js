@@ -41,7 +41,6 @@ export class HomeScreen extends Component {
   }
 
   filterCategories = () => {
-    console.log('from home', this.props.allRecommendations.length)
     const categoryList = this.props.allRecommendations.reduce((acc, rec) => {
       rec.categories.forEach(cat => {
         if(!acc[cat]) {
