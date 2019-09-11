@@ -5,14 +5,14 @@ import * as Google from 'expo-google-app-auth';
 import { GOOGLE_CLIENT_ID } from 'react-native-dotenv';
 import { IOS_CLIENT_ID } from 'react-native-dotenv';
 import googleLogin from '../../images/btn_google_signin_light_normal_web.png'
+import { connect } from 'react-redux';
+import { isLoggedIn } from '../../actions'
 
 export class LogInScreen extends Component {
   constructor() {
     super();
-    this.state = {
-      signedIn: false,
-      name: '',
-      image: ''
+    this.state={
+      error: ''
     }
   }
 
@@ -28,23 +28,23 @@ export class LogInScreen extends Component {
       })
 
       if (type === "success") {
-        this.setState({
-          signedIn: true,
+        this.props.isLoggedIn({
+          loggedIn: true,
           name: user.name,
+          email: user.email,
           photoUrl: user.photoUrl
         })
-        console.log(user)
+        fetch(`https://twocents-be.herokuapp.com/api/v1/users/login?p=${user.id}`)
+        this.props.navigation.navigate( {routeName: 'Home'} )
       } else {
-        console.log("cancelled")
+        this.setState({error})
       }
     } catch (e) {
-      console.log(e)
-      console.log("error-last", e)
+      this.setState({error: e})
     }
   }
 
   render() {
-    
     return(
       <View style={styles.container}>
         <View style={styles.appLogo}>
@@ -128,5 +128,10 @@ const styles = StyleSheet.create({
     shadowColor: 'black',
     shadowOpacity: 1.0,
   },
-  
 })
+
+export const mapDispatchToProps = dispatch => ({
+  isLoggedIn: (user) => dispatch(isLoggedIn(user))
+})
+
+export default connect(null, mapDispatchToProps)(LogInScreen)

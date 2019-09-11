@@ -1,8 +1,8 @@
 
-export const loggedInReducer = (state = false, action) => {
-  switch(action) {
+export const loggedInReducer = (state = {}, action) => {
+  switch(action.type) {
     case 'IS_LOGGED_IN':
-      return action.payload;
+      return action.user;
     default:
       return state;
   }
