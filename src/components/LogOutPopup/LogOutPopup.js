@@ -33,6 +33,7 @@ export class LogOutPopup extends Component {
             <DialogButton 
               text='Log Out'
               onPress={() => {
+                this.props.logOut({})
                 this.props.handlePopup(false)
                 this.props.navigation.navigate( {routeName: 'LogIn'} )}}
             ></DialogButton>

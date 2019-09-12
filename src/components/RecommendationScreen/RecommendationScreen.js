@@ -18,7 +18,6 @@ export class RecommendationsScreen extends Component {
   }
 
   componentWillMount() {
-    console.log(this.props.navigation.getParam('recommendation'))
     this.setState({recommendation: this.props.navigation.getParam('recommendation')})
   }
 
@@ -43,7 +42,6 @@ export class RecommendationsScreen extends Component {
       tintColor= '#EE933F'
       onPress={()=>{
         navThis.handleUpdateRecommendations()
-        console.log(navThis.props.allRecommendations.length)
         navigation.navigate({routeName: 'Home'} )
       }}/>
     )
@@ -89,7 +87,6 @@ export class RecommendationsScreen extends Component {
   }
 
   render() {
-    console.log(this.state.recommendation)
     const {name, image, rating, reviewCount, categories, coordinates, price, hours} = this.state.recommendation
     const categoryText = categories.join(', ')
     return(

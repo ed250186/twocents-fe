@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
 })
 
 export const mapStateToProps = state => ({
-  allRecommendations: state.allRecommendations
+  allRecommendations: state.allRecommendations,
 })
 
 export const mapDispatchToProps = dispatch => ({
