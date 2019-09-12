@@ -31,7 +31,6 @@ export class HomeScreen extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.loggedIn)
     this.fetchRecommendations()
   }
 
