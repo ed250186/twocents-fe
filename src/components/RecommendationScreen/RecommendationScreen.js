@@ -4,8 +4,9 @@ import MapView, { Marker } from 'react-native-maps';
 import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { HeaderBackButton } from 'react-navigation-stack';
-import { updateRecommendations } from '../../actions/index'
-
+import { updateRecommendations, setRecommendations } from '../../actions/index';
+import { addRecommendation, removeRecommendation } from '../../../utils/APICalls';
+import { getAllRecommendations } from '../../../utils/APICalls';
 
 export class RecommendationsScreen extends Component {
   constructor() {
@@ -42,11 +43,20 @@ export class RecommendationsScreen extends Component {
       tintColor= '#EE933F'
       onPress={()=>{
         navThis.handleUpdateRecommendations()
+        navThis.fetchRecommendations()
         navigation.navigate({routeName: 'Home'} )
       }}/>
     )
     }
   };
+
+  fetchRecommendations = async () => {
+    await getAllRecommendations(this.props.loggedIn.key)
+      .then(data => {
+        // console.log('data', data.locations)
+        this.props.setRecommendations(data.locations)
+      })
+  }
 
   checkBookmark = () => {
     if(this.props.allRecommendations.includes(this.state.recommendation)) {
@@ -64,13 +74,16 @@ export class RecommendationsScreen extends Component {
     }
   }
 
-  handleUpdateRecommendations = () => {
+  handleUpdateRecommendations = async () => {
+    const { key } = this.props.loggedIn
+    const { yelpId } = this.state.recommendation
     const isSaved = this.props.allRecommendations.includes(this.state.recommendation)
     if(this.state.bookmark === 'bookmark' && !isSaved) {
       const newRecs = [this.props.allRecommendations, this.state.recommendation]
       this.props.updateRecommendations(newRecs)
       console.log('Add')
       //toggle bookmark to bookmark and send post request
+      await addRecommendation(key, yelpId)
     } else if(this.state.bookmark === 'bookmark-border' && isSaved) {
       const newRecs = this.props.allRecommendations.filter(rec => {
         return rec !== this.state.recommendation
@@ -78,6 +91,7 @@ export class RecommendationsScreen extends Component {
       this.props.updateRecommendations(newRecs)
       console.log('delete')
       //toggle bookmark to bookmark-border and send delete request
+      await removeRecommendation(key, yelpId)
     }
     // this.checkBookmark()
   }
@@ -222,10 +236,12 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = state => ({
-  allRecommendations: state.allRecommendations
+  allRecommendations: state.allRecommendations,
+  loggedIn: state.loggedIn
 })
 
 const mapDispatchToProps = dispatch => ({
+  setRecommendations: (cat) => dispatch(setRecommendations(cat)),
   updateRecommendations: (rec) => dispatch(updateRecommendations(rec))
 })
 

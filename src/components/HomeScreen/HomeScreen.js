@@ -15,6 +15,7 @@ export class HomeScreen extends Component {
   }
   
   componentWillMount(){
+    console.log('will mount')
     navigator.geolocation.getCurrentPosition(
       position => {
         const latitude = JSON.stringify(position.coords.latitude);
@@ -31,20 +32,32 @@ export class HomeScreen extends Component {
   }
 
   componentDidMount() {
+    console.log('did mount')
     this.fetchRecommendations()
+  }
+
+  componentWillReceiveProps(props) {
+    console.log('props', Object.entries(props.allRecommendations).length)
+    if(Object.entries(props.allRecommendations).length !== this.props.allRecommendations.length) {
+      this.fetchRecommendations()
+    }
+
   }
 
   fetchRecommendations = async () => {
     await getAllRecommendations(this.props.loggedIn.key)
       .then(data => {
-        this.props.setRecommendations(data)
+        // console.log('data', data.locations)
+        this.props.setRecommendations(data.locations)
       })
     this.filterCategories()
   }
 
   filterCategories = () => {
+    // console.log(this.props.allRecommendations)
     const categoryList = this.props.allRecommendations.reduce((acc, rec) => {
       rec.categories.forEach(cat => {
+        // console.log('cat', cat)
         if(!acc[cat]) {
           acc[cat] = []
         }
@@ -52,10 +65,12 @@ export class HomeScreen extends Component {
       })
       return acc
     }, {})
+    // console.log('categoryList', categoryList)
     this.setState({categories: categoryList})
   }
   
   render() {
+    console.log('render')
     const sideScroll = Object.entries(this.state.categories).map((cat, key) => (
       <CategoryScroll 
         category={cat[0]} 
@@ -65,10 +80,11 @@ export class HomeScreen extends Component {
       />
     ))
     const empty = 'You have no recommendations saved yet, search for some!'
+    console.log(this.props.allRecommendations.length)
     return (
       <View style={styles.container}>
         <ScrollView  style={styles.scroll}>
-          {this.props.allRecommendations.length > 1 && sideScroll}
+          {this.props.allRecommendations.length > 0 && sideScroll}
           {this.props.allRecommendations.length < 1 && <Text style={styles.text}>{empty}</Text>}
         </ScrollView>
       </View>
