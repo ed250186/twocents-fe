@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { LogOutPopup } from '../LogOutPopup/LogOutPopup'
 import { connect } from 'react-redux';
+import { isLoggedIn } from '../../actions'
 
 export class UserScreen extends Component {
   constructor() {
@@ -62,6 +63,7 @@ export class UserScreen extends Component {
           popupVisible={this.state.popupVisible}
           handlePopup={this.handlePopup}
           navigation={this.props.navigation}
+          logOut={this.props.isLoggedIn}
         />
       </View>
     );
@@ -122,8 +124,14 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   allRecommendations: state.allRecommendations,
   loggedIn: state.loggedIn
 })
-export default connect(mapStateToProps)(UserScreen);
+
+export const mapDispatchToProps = dispatch => ({
+  isLoggedIn: (user) => dispatch(isLoggedIn(user)),
+})
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserScreen);
