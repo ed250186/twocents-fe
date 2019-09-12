@@ -76,11 +76,7 @@ exports[`SearchScreen should match to snapshot 1`] = `
       }
     }
   >
-    <View>
-      <Text>
-        No Results Found
-      </Text>
-    </View>
+    <View />
   </ScrollViewMock>
 </View>
 `;

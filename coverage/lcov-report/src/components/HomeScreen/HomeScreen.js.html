@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">42.42% </span>
+        <span class="strong">45.45% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>14/33</span>
+        <span class='fraction'>15/33</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">50% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>5/16</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">45.16% </span>
+        <span class="strong">48.39% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>14/31</span>
+        <span class='fraction'>15/31</span>
       </div>
     </div>
     <p class="quiet">
@@ -156,7 +156,10 @@
 <a name='L108'></a><a href='#L108'>108</a>
 <a name='L109'></a><a href='#L109'>109</a>
 <a name='L110'></a><a href='#L110'>110</a>
-<a name='L111'></a><a href='#L111'>111</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -190,16 +193,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -257,6 +262,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -299,17 +305,19 @@ export class HomeScreen extends Component {
   }
 &nbsp;
   componentDidMount() {
+    console.log(this.props.loggedIn)
     this.fetchRecommendations()
   }
 &nbsp;
   fetchRecommendations = async () =&gt; {
-    await getAllRecommendations()
-      .then(<span class="fstat-no" title="function not covered" >da</span>ta =&gt; <span class="cstat-no" title="statement not covered" >this.props.setRecommendations(data))</span>
+    await getAllRecommendations(this.props.loggedIn.key)
+      .then(<span class="fstat-no" title="function not covered" >da</span>ta =&gt; {
+<span class="cstat-no" title="statement not covered" >        this.props.setRecommendations(data)</span>
+      })
 <span class="cstat-no" title="statement not covered" >    this.filterCategories()</span>
   }
 &nbsp;
   filterCategories = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >    console.log('from home', this.props.allRecommendations.length)</span>
     const categoryList = <span class="cstat-no" title="statement not covered" >this.props.allRecommendations.reduce(<span class="fstat-no" title="function not covered" >(a</span>cc, rec) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >      rec.categories.forEach(<span class="fstat-no" title="function not covered" >ca</span>t =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        if(!acc[cat]) {</span>
@@ -368,7 +376,8 @@ const styles = StyleSheet.create({
 &nbsp;
 const mapStateToProps = <span class="fstat-no" title="function not covered" >st</span>ate =&gt; (<span class="cstat-no" title="statement not covered" >{</span>
   allRecommendations: state.allRecommendations,
-  userLocation: state.userLocation
+  userLocation: state.userLocation,
+  loggedIn: state.loggedIn
 })
 &nbsp;
 const mapDispatchToProps = <span class="fstat-no" title="function not covered" >di</span>spatch =&gt; (<span class="cstat-no" title="statement not covered" >{</span>
@@ -382,7 +391,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)</pre></t
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Sep 10 2019 21:16:12 GMT-0600 (Mountain Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Sep 11 2019 18:56:11 GMT-0600 (Mountain Daylight Time)
 </div>
 </div>
 <script src="../../../prettify.js"></script>
