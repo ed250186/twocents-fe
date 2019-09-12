@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { HomeScreen } from './HomeScreen';
+import { HomeScreen, mapStateToProps, mapDispatchToProps } from './HomeScreen';
 // import {NavigationTestUtils} from "react-navigation/NavigationTestUtils";
 
 describe('HomeScreen', () => {
@@ -32,6 +32,19 @@ describe('HomeScreen', () => {
     expect(instance.fetchRecommendations).toHaveBeenCalledTimes(0)
     instance.componentDidMount()
     expect(instance.fetchRecommendations).toHaveBeenCalledTimes(1)
+  })
+
+  describe('mapStateToProps', () => {
+    it('allRecommendations should have a state of allRecommendations', () => {
+      const mockState = {
+        allRecommendations: 'allRecommendations'
+      }
+      const expected = {
+        allRecommendations: 'allRecommendations'
+      }
+      const mappedProps = mapStateToProps(mockState)
+      expect(mappedProps).toEqual(expected)
+    })
   })
   
 });

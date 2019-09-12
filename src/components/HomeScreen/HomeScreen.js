@@ -100,13 +100,13 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   allRecommendations: state.allRecommendations,
   userLocation: state.userLocation,
   loggedIn: state.loggedIn
 })
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   setRecommendations: (cat) => dispatch(setRecommendations(cat)),
   getUserLocation: (location) => dispatch(getUserLocation(location))
 })
