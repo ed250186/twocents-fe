@@ -8,6 +8,7 @@ export class CategoryScroll extends Component {
   }
 
   render() {
+    // console.log('CategoreScroll',this.props.recommendations)
     const recommendations = this.props.recommendations.map(rec => (
       <MiniRec 
         key={rec.id} 

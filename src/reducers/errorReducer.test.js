@@ -1,21 +1,31 @@
-import errorReducer from './errorReducer'
+import { errorReducer } from './errorReducer'
 
-describe('ErrorReducer', () => {
-  it('Should return default state', () => {
-    const mockState = undefined;
+describe('errorReducer', () => {
+  it('should return the initial state', () => {
     const expected = '';
-    const result = ErrorReducer(mockState, {})
+    const result = errorReducer(undefined, '')
+    expect(result).toEqual(expected) 
+  })
 
+  it('should set an error to state', () => {
+    const action = {
+      type: 'HAS_ERRORED',
+      message: 'Error'
+    }
+
+    const expected = 'Error'
+    const result = errorReducer(undefined, action);
     expect(result).toEqual(expected)
   })
-  it('Should return error message when action type is HAS ERRORED', () => {
-    const mockAction = {
-      type: 'HAS ERRORED',
-      error: 'Mock error message'
+
+  it('should clear the error message', () => {
+    const action = {
+      type: 'CLEAR_ERROR',
+      message: ''
     }
-    const expected = 'Mock error message'
-    const result = ErrorReducer('', mockAction)
-    
+
+    const expected = ''
+    const result = errorReducer(undefined, action);
     expect(result).toEqual(expected)
   })
 })
