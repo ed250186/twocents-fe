@@ -2,7 +2,7 @@
 
 ## Description
 
-A React Native application created to help users save recommended locations and learn more information about that place. Using the Yelp API, users are able to save or remove specific locations. The user also has the ability to look up their recommendations to see the reviews, today's hours, the price point and view it's location on GoogleMaps. 
+An app for doing something with your recommendations, TwoCents was created to help users save recommendations they receive and learn more information about that place. Initially focusing on recommended locations, users can look up a recommended location to see its reviews, today's hours, its price point, and view its location on Google Maps. Relying on the Yelp Fusion API, the app allows users to then save these locations to their collection, organizing them by category.
 
 TwoCents Backend can be found [here](https://github.com/m-mrcr/twocents-be)
 
