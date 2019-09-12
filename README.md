@@ -39,31 +39,42 @@ TwoCents Backend can be found [here](https://github.com/m-mrcr/twocents-be)
 
 ## Screenshots
 ### Login Screen
-![loginScreen](https://github.com/emilydittmer/twocents-fe/blob/master/src/images/IMG_1450.PNG)
+<img src="https://github.com/emilydittmer/twocents-fe/blob/master/src/images/IMG_1450.PNG" alt="Login Screen"
+	width="250" />
 
 ### Home Screen
-![Home Screen, no Recommendations](https://github.com/emilydittmer/twocents-fe/blob/master/src/images/IMG_1451.PNG)
-![Home Screen, Recommendations](https://github.com/emilydittmer/twocents-fe/blob/master/src/images/IMG_1458.PNG)
+<img src="https://github.com/emilydittmer/twocents-fe/blob/master/src/images/IMG_1451.PNG" alt="Home Screen"
+	width="250" />
+<img src="https://github.com/emilydittmer/twocents-fe/blob/master/src/images/IMG_1458.PNG" alt="Home Screen with Recommendations"
+	width="250" />
 
 ### Search Screen
-![Search Current Recommendations](https://github.com/emilydittmer/twocents-fe/blob/master/src/images/IMG_1452.PNG)
-![Search Yelp Recommendations](https://github.com/emilydittmer/twocents-fe/blob/master/src/images/IMG_1453.PNG)
-![Search Results](https://github.com/emilydittmer/twocents-fe/blob/master/src/images/IMG_1454.PNG)
+<img src="https://github.com/emilydittmer/twocents-fe/blob/master/src/images/IMG_1452.PNG" alt="Search Current Recommendations"
+	width="250" />
+<img src="https://github.com/emilydittmer/twocents-fe/blob/master/src/images/IMG_1453.PNG" alt="Search Yelp Recommendations"
+	width="250" />
+<img src="https://github.com/emilydittmer/twocents-fe/blob/master/src/images/IMG_1454.PNG" alt="Search Results"
+	width="250" />
 
 ### Recommendations Screen
-![Recommendation](https://github.com/emilydittmer/twocents-fe/blob/master/src/images/IMG_1455.PNG)
-![Recommendation 2](https://github.com/emilydittmer/twocents-fe/blob/master/src/images/IMG_1456.PNG)
+<img src="https://github.com/emilydittmer/twocents-fe/blob/master/src/images/IMG_1455.PNG" alt="Recommendation"
+	width="250" />
+<img src="https://github.com/emilydittmer/twocents-fe/blob/master/src/images/IMG_1456.PNG" alt="Recommendation 2"
+	width="250" />
 
 ### User Screen
-![User Profile](https://github.com/emilydittmer/twocents-fe/blob/master/src/images/IMG_1461.PNG)
+<img src="https://github.com/emilydittmer/twocents-fe/blob/master/src/images/IMG_1461.PNG" alt="User Screen"
+	width="250" />
 
 ### WireFrames
 
 ### Home Screen With Recommendations
-![Home Screen With Recommendations](https://github.com/emilydittmer/twocents-fe/blob/master/src/images/WireFrame-HomeScreen.png)
+<img src="https://github.com/emilydittmer/twocents-fe/blob/master/src/images/WireFrame-HomeScreen.png" alt="Home Screen With Recommendations"
+	width="250" />
 
 ### Recommendation Screen
-![Recommendation Screen](https://github.com/emilydittmer/twocents-fe/blob/master/src/images/Wireframe-RecPage1.png)
+<img src="https://github.com/emilydittmer/twocents-fe/blob/master/src/images/Wireframe-RecPage1.png" alt="Recommendation"
+	width="250" />
 
 ## Learning Goals
 - Ultimately, demonstrate knowledge you’ve gained throughout Turing
