@@ -31,12 +31,15 @@ export class HomeScreen extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props.loggedIn)
     this.fetchRecommendations()
   }
 
   fetchRecommendations = async () => {
-    await getAllRecommendations()
-      .then(data => this.props.setRecommendations(data))
+    await getAllRecommendations(this.props.loggedIn.key)
+      .then(data => {
+        this.props.setRecommendations(data)
+      })
     this.filterCategories()
   }
 
@@ -99,7 +102,8 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => ({
   allRecommendations: state.allRecommendations,
-  userLocation: state.userLocation
+  userLocation: state.userLocation,
+  loggedIn: state.loggedIn
 })
 
 const mapDispatchToProps = dispatch => ({

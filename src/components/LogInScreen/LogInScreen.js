@@ -29,28 +29,39 @@ export class LogInScreen extends Component {
       })
 
       if (type === "success") {
-        this.props.isLoggedIn({
-          loggedIn: true,
-          name: user.name,
-          email: user.email,
-          photoUrl: user.photoUrl
-        })
-        fetch(`https://twocents-be.herokuapp.com/api/v1/users/signup?p=${user.id}`)
-        .then(response => response.json())
-        .then(data => console.log(data))
-        this.props.navigation.navigate( {routeName: 'Home'} )
-      } else {
-        this.setState({error})
-      }
+        fetch(`https://twocents-be.herokuapp.com/api/v1/users/signup?p=${user.id}`, {
+          method: 'POST',
+          headers:{
+            'Content-Type': 'application/json'
+          }
+        }).then(res => {
+          if(!res.status === 201){
+              this.setState({ error: 'Error signing in'})
+            } else{
+              return res.json()
+            }
+          })
+          .then(userData => {
+            this.props.isLoggedIn({
+                loggedIn: true,
+                name: user.name,
+                email: user.email,
+                photoUrl: user.photoUrl,
+                key: userData.key
+            })
+            this.props.navigation.navigate( {routeName: 'Home'} )
+          })
+      } else{
+        this.setState({error:'Error Signing Up'})
+        } 
     } catch (e) {
       this.setState({error: e})
     }
   }
 
   signIn = async () => {
-    
     try {
-      const { type, accessToken, user } = await Google.logInAsync({
+      const { type, user } = await Google.logInAsync({
         androidClientId:
           GOOGLE_CLIENT_ID,
         iosClientId: 
@@ -59,27 +70,35 @@ export class LogInScreen extends Component {
       })
 
       if (type === "success") {
-        this.props.isLoggedIn({
-          loggedIn: true,
-          name: user.name,
-          email: user.email,
-          photoUrl: user.photoUrl
+        fetch(`https://twocents-be.herokuapp.com/api/v1/users/login?p=${user.id}`, {
+          headers:{
+            'Content-Type': 'application/json'
+          }
         })
-        fetch(`https://twocents-be.herokuapp.com/api/v1/users/signin?p=${user.id}`)
-        .then(response => response.json())
-        .then(data => console.log(data))
-        this.props.navigation.navigate( {routeName: 'Home'} )
-      } else {
-        this.setState({error})
-      }
+        .then(response => {
+          if(!response.status === 200){
+            this.setState({ error: 'Error signing in'})
+          } else{
+            return response.json()
+          }
+        })
+        .then(userData => {
+          this.props.isLoggedIn({
+              loggedIn: true,
+              name: user.name,
+              email: user.email,
+              photoUrl: user.photoUrl,
+              key: userData.key
+          })
+          this.props.navigation.navigate( {routeName: 'Home'} )
+        })
+      } 
     } catch (e) {
       this.setState({error: e})
     }
   }
 
   render() {
-    console.log('recs', this.props.allRecommendations)
-
     return(
       <View style={styles.container}>
         <View style={styles.appLogo}>
@@ -101,7 +120,7 @@ export class LogInScreen extends Component {
           </TouchableOpacity>
           <TouchableOpacity 
             activeOpacity={.5} 
-            onPress={() => this.props.navigation.navigate( {routeName: 'Home'} )}  
+            onPress={this.signUp}  
           >
             <Image source={googleSignUp} style={{width: 270, height: 50}}/>
           </TouchableOpacity>
