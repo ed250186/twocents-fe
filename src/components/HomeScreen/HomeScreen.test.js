@@ -68,6 +68,17 @@ describe('HomeScreen', () => {
       const mappedProps = mapStateToProps(mockState)
       expect(mappedProps).toEqual(expected)
     })
+
+    describe('mapDispatchToProps', () => {
+
+      it('mapDispatchToProps.setRecommendations should be jest.fn()', async () => {
+        const mockDispatch = jest.fn()
+        const mappedProps = mapDispatchToProps(mockDispatch)
+        await mappedProps.setRecommendations('hi')
+        expect(mockDispatch).toHaveBeenCalledWith({"payload": "hi", "type": "RECOMMENDATIONS"})
+      })
+  
+    })  
   })
   
 });
