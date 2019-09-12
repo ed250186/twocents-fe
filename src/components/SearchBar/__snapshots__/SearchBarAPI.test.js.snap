@@ -19,6 +19,7 @@ exports[`SearchBarCallAPI should match to snapshot 1`] = `
     onSubmitEditing={[Function]}
     placeholder="Enter Recommended Location"
     rejectResponderTermination={true}
+    returnKeyType="search"
     style={
       Object {
         "color": "#FFF",
@@ -34,6 +35,7 @@ exports[`SearchBarCallAPI should match to snapshot 1`] = `
     onSubmitEditing={[Function]}
     placeholder="Enter City and State"
     rejectResponderTermination={true}
+    returnKeyType="search"
     style={
       Object {
         "color": "#FFF",
@@ -41,7 +43,7 @@ exports[`SearchBarCallAPI should match to snapshot 1`] = `
       }
     }
     underlineColorAndroid="transparent"
-    value=""
+    value="Current Location"
   />
 </View>
 `;

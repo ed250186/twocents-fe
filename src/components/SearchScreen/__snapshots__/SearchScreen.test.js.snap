@@ -64,8 +64,19 @@ exports[`SearchScreen should match to snapshot 1`] = `
       }
     }
   >
-    <SearchBar />
+    <SearchBar
+      getSearchResults={[Function]}
+    />
   </View>
-  <ScrollViewMock />
+  <ScrollViewMock
+    style={
+      Object {
+        "display": "flex",
+        "flexDirection": "column",
+      }
+    }
+  >
+    <View />
+  </ScrollViewMock>
 </View>
 `;

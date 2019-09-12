@@ -4,9 +4,20 @@ import { LogInScreen } from './LogInScreen';
 
 describe('LogInScreen', () => {
 
+  let wrapper, instance;
+  let props =  {
+    navigation: {
+      navigate: jest.fn()
+    },
+    allRecommendations: []
+  }
+
+  beforeEach(() => {
+    wrapper = shallow(<LogInScreen {...props} />);
+  })
+
   it('should match to snapshot', () => {
-    const component = shallow(<LogInScreen/>)
-    expect(component).toMatchSnapshot()
+    expect(wrapper).toMatchSnapshot()
   });
   
 });

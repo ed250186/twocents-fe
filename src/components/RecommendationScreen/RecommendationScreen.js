@@ -18,6 +18,7 @@ export class RecommendationsScreen extends Component {
   }
 
   componentWillMount() {
+    console.log(this.props.navigation.getParam('recommendation'))
     this.setState({recommendation: this.props.navigation.getParam('recommendation')})
   }
 
@@ -88,7 +89,8 @@ export class RecommendationsScreen extends Component {
   }
 
   render() {
-    const {name, image, phone, rating, reviewCount, categories, coordinates, price, hours} = this.state.recommendation
+    console.log(this.state.recommendation)
+    const {name, image, rating, reviewCount, categories, coordinates, price, hours} = this.state.recommendation
     const categoryText = categories.join(', ')
     return(
       <ScrollView style={styles.container}>
@@ -118,10 +120,10 @@ export class RecommendationsScreen extends Component {
               <Text style={styles.title}>Price</Text>
               <Text style={styles.text}>{price}</Text>
             </View>
-            <View>
+            {/* <View>
               <Text style={styles.title}>Hours</Text>
               <Text style={styles.text}>{hours[0]}</Text>
-            </View>
+            </View> */}
           </View>
           <MapView
             style={{flex: 1, height: 300, width: '100%', marginBottom: 20}}

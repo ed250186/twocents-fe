@@ -19,6 +19,7 @@ exports[`SearchBar should match to snapshot 1`] = `
     onSubmitEditing={[Function]}
     placeholder="Enter saved location"
     rejectResponderTermination={true}
+    returnKeyType="search"
     style={
       Object {
         "color": "#FFF",
