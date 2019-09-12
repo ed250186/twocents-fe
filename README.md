@@ -14,7 +14,16 @@ TwoCents Backend can be found [here](https://github.com/m-mrcr/twocents-be)
 - Enzyme & Jest testing
 - Webpack
 - JavaScript
+- Google Maps
+- Google OAuth
+- Figma
 
+### Back-End
+- Node.js
+- Express
+- Yelp API
+- Google OAuth
+- Sequelize
 
 ## Installation
 
@@ -29,7 +38,32 @@ TwoCents Backend can be found [here](https://github.com/m-mrcr/twocents-be)
 
 
 ## Screenshots
+### Login Screen
+![loginScreen](https://github.com/emilydittmer/twocents-fe/blob/master/src/images/IMG_1450.PNG)
 
+### Home Screen
+![Home Screen, no Recommendations](https://github.com/emilydittmer/twocents-fe/blob/master/src/images/IMG_1451.PNG)
+![Home Screen, Recommendations](https://github.com/emilydittmer/twocents-fe/blob/master/src/images/IMG_1458.PNG)
+
+### Search Screen
+![Search Current Recommendations](https://github.com/emilydittmer/twocents-fe/blob/master/src/images/IMG_1452.PNG)
+![Search Yelp Recommendations](https://github.com/emilydittmer/twocents-fe/blob/master/src/images/IMG_1453.PNG)
+![Search Results](https://github.com/emilydittmer/twocents-fe/blob/master/src/images/IMG_1454.PNG)
+
+### Recommendations Screen
+![Recommendation](https://github.com/emilydittmer/twocents-fe/blob/master/src/images/IMG_1455.PNG)
+![Recommendation 2](https://github.com/emilydittmer/twocents-fe/blob/master/src/images/IMG_1456.PNG)
+
+### User Screen
+![User Profile](https://github.com/emilydittmer/twocents-fe/blob/master/src/images/IMG_1461.PNG)
+
+### WireFrames
+
+### Home Screen With Recommendations
+![Home Screen With Recommendations](https://github.com/emilydittmer/twocents-fe/blob/master/src/images/WireFrame-HomeScreen.png)
+
+### Recommendation Screen
+![Recommendation Screen](https://github.com/emilydittmer/twocents-fe/blob/master/src/images/Wireframe-RecPage1.png)
 
 ## Learning Goals
 - Ultimately, demonstrate knowledge you’ve gained throughout Turing
