@@ -77,6 +77,13 @@ describe('HomeScreen', () => {
         await mappedProps.setRecommendations('hi')
         expect(mockDispatch).toHaveBeenCalledWith({"payload": "hi", "type": "RECOMMENDATIONS"})
       })
+
+      it('mapDispatchToProps.getUserLocation should be jest.fn()', async () => {
+        const mockDispatch = jest.fn()
+        const mappedProps = mapDispatchToProps(mockDispatch)
+        await mappedProps.getUserLocation('hi')
+        expect(mockDispatch).toHaveBeenCalledWith({"location": "hi", "type": "GET_USER_LOCATION"})
+      })
   
     })  
   })
