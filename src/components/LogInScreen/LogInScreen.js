@@ -156,8 +156,6 @@ const styles = StyleSheet.create({
     height: '40%',
     width: '90%',
     marginBottom: '10%',
-    borderColor: '#EE933F',
-    borderWidth: 1
   },
   loginButtons: {
     alignItems: 'center',
