@@ -35,16 +35,16 @@ export class UserScreen extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.imageBox}>
-          <Image style={styles.image}/>
+          <Image style={styles.image} source={{uri:this.props.loggedIn.photoUrl}} alt='{this.props.name} Profile Picture'/>
         </View>
         <View style={styles.info}>
           <View style={styles.textBox}>
-            <Text style={styles.mainText}>Username</Text>
-            <Text style={styles.minorText}>name from global store</Text>
+            <Text style={styles.mainText}>Name</Text>
+            <Text style={styles.minorText}>{this.props.loggedIn.name}</Text>
           </View>
           <View style={styles.textBox}>
             <Text style={styles.mainText}>Email</Text>
-            <Text style={styles.minorText}>Email from global store</Text>
+            <Text style={styles.minorText}>{this.props.loggedIn.email}</Text>
           </View>
           <View style={styles.textBox}>
             <Text style={styles.mainText}>Recommendations</Text>
@@ -115,18 +115,15 @@ const styles = StyleSheet.create({
   image: {
     height: 100,
     width: 100,
-    borderWidth: 1,
-    borderColor: 'red'
   },
   imageBox: {
     width: '80%',
     height: '20%',
-    borderWidth: 1,
-    borderColor: 'green'
   }
 });
 
 const mapStateToProps = state => ({
-  allRecommendations: state.allRecommendations
+  allRecommendations: state.allRecommendations,
+  loggedIn: state.loggedIn
 })
 export default connect(mapStateToProps)(UserScreen);

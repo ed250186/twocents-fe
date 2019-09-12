@@ -3,7 +3,6 @@ import { Text, View, StyleSheet, TouchableOpacity, ScrollView } from 'react-nati
 import SearchBar from '../SearchBar/SearchBar';
 import SearchBarCallAPI from '../SearchBar/SearchBarCallAPI'
 import { connect } from 'react-redux';
-import { fetchSearchYelpLatLong } from '../../../utils/APICalls'
 
 export class SearchScreen extends Component {
   constructor(){
@@ -11,19 +10,21 @@ export class SearchScreen extends Component {
     this.state ={
       currentRecs: true,
       searchResults: [],
-      error: ''
+      error: '',
+      noResults: ''
     }
   }
 
   getSearchResults = (value) => {
     let searchResults = this.props.allRecommendations.filter(rec => rec.name.toUpperCase().includes(value.toUpperCase()))
     this.setState({searchResults})
+    if(!this.state.searchResults.length){
+        this.setState({noResults: 'No Results Found'})
+    }
   }
 
-  
-
   getYelpSearchResultsLocation = async (name, address) => {
-    await fetch(`https://twocents-be.herokuapp.com/api/v1/search/yelp_search/?term=${name}&location=${address}`)
+    await fetch(`https://twocents-be.herokuapp.com/api/v1/search/yelp_search/?term=${name}&location=${address}`) 
     .then(response => {
       if(!response.ok) {
         return error => this.setState({error});
@@ -31,12 +32,17 @@ export class SearchScreen extends Component {
         return response.json()
       }
     })
-    .then(recs => this.setState({searchResults:recs.businesses}))
+    .then(recs => this.setState({searchResults: recs}))
+    .then(()=> {
+      if(!this.state.searchResults.length){
+        this.setState({noResults: 'No Results Found'})
+      }
+    })
     .catch(error => this.setState({error}))
   }
 
   getYelpSearchResultsLatLong = async (name, lat, long) => {
-    await fetch(`https://twocents-be.herokuapp.com/api/v1/search/yelp_search/?term=${name}&latitude=${lat}&longitude=${long}`)
+    await fetch(`https://twocents-be.herokuapp.com/api/v1/search/yelp_search/?term=${name}&latitude=${lat}&longitude=${long}`) 
     .then(response => {
       if(!response.ok) {
         return error => this.setState({error});
@@ -44,18 +50,21 @@ export class SearchScreen extends Component {
         return response.json()
       }
     })
-    .then(recs => this.setState({searchResults:recs.businesses}))
+    .then(recs => this.setState({searchResults: recs}))
+    .then(()=> {
+      if(!this.state.searchResults.length){
+        this.setState({noResults: 'No Results Found'})
+      }
+    })
     .catch(error => this.setState({error}))
   }
 
   render() {
     let search;
-    let noResults = (<Text>No Results Found</Text>)
     let resultName = this.state.searchResults.map((rec, key) => 
     <TouchableOpacity 
       key={key}
       onPress={() => {
-      console.log(rec)
       return this.props.navigation.navigate('RecScreen', {recommendation: rec})}}>
         <Text style={styles.searchResult}>{rec.name}</Text>
       </TouchableOpacity>)
@@ -68,10 +77,10 @@ export class SearchScreen extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.toggleSearch}>
-          <TouchableOpacity onPress={() => this.setState({currentRecs: true, searchResults: []})}>
+          <TouchableOpacity onPress={() => this.setState({currentRecs: true, searchResults: [], noResults: ''})}>
             <Text style={ (this.state.currentRecs == false) ? styles.toggleMenu : styles.toggleMenuTrue}>MY TWOCENTS</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.setState({currentRecs: false, searchResults: []})}>
+          <TouchableOpacity onPress={() => this.setState({currentRecs: false, searchResults: [], noResults: ''})}>
             <Text style={ (this.state.currentRecs == false) ? styles.toggleMenuTrue : styles.toggleMenu}>NEW TWOCENTS</Text>
           </TouchableOpacity>
         </View>
@@ -79,7 +88,12 @@ export class SearchScreen extends Component {
             {search}
           </View>
         <ScrollView style={styles.allResults}>
-          <View>{!this.state.searchResults.length ? noResults : resultName }</View>
+          <View>
+            {this.state.noResults && !this.state.searchResults.length
+              ? <Text style={styles.searchResult}>{this.state.noResults}</Text>
+              : resultName 
+            }
+          </View>
         </ScrollView>
       </View>
     );

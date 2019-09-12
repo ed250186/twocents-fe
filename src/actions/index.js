@@ -1,7 +1,7 @@
 
-export const isLoggedIn = (boolean) => ({
+export const isLoggedIn = user => ({
   type: 'IS_LOGGED_IN',
-  payload: boolean
+  user
 })
 
 export const updateRecommendations = (recommendation) => ({

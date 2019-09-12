@@ -1,7 +1,7 @@
 import { hasErrored, loadingComplete, grabCurrentRecsSearchResults } from '../src/actions';
 
-export const getAllRecommendations = async () => {
-  return await fetch('https://twocents-be.herokuapp.com/api/v1/users/recommendations')
+export const getAllRecommendations = async (key) => {
+  return await fetch(`https://twocents-be.herokuapp.com/api/v1/users/recommendations/${key}`)
     .then(res => res.json())
     .then(data => data)
 }
