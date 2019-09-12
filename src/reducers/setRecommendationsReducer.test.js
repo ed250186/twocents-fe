@@ -21,4 +21,18 @@ describe('setRecommendationsReducer', () => {
     const result = setRecommendationsReducer(undefined, action);
     expect(result).toEqual(expected)
   })
+  it('should update the recommendations', () => {
+    const action = {
+      type: 'UPDATE_RECOMMENDATIONS',
+      payload:[
+        {name: 'Little Owl'}
+      ]
+    }
+
+    const expected = [{
+      name: 'Little Owl'
+    }]
+    const result = setRecommendationsReducer(undefined, action);
+    expect(result).toEqual(expected)
+  })
 })
