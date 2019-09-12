@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1568249771384" clover="3.2.0">
-  <project timestamp="1568249771384" name="All files">
-    <metrics statements="145" coveredstatements="63" conditionals="36" coveredconditionals="8" methods="83" coveredmethods="14" elements="264" coveredelements="85" complexity="0" loc="145" ncloc="145" packages="11" files="13" classes="13"/>
+<coverage generated="1568253294661" clover="3.2.0">
+  <project timestamp="1568253294662" name="All files">
+    <metrics statements="131" coveredstatements="66" conditionals="34" coveredconditionals="10" methods="71" coveredmethods="17" elements="236" coveredelements="93" complexity="0" loc="131" ncloc="131" packages="11" files="13" classes="13"/>
     <package name="src.actions">
       <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="0"/>
       <file name="index.js" path="/Users/nathan/Turing/Mod4/twocents-fe/src/actions/index.js">
@@ -194,29 +194,15 @@
       </file>
     </package>
     <package name="utils">
-      <metrics statements="20" coveredstatements="3" conditionals="4" coveredconditionals="0" methods="15" coveredmethods="0"/>
+      <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
       <file name="APICalls.js" path="/Users/nathan/Turing/Mod4/twocents-fe/utils/APICalls.js">
-        <metrics statements="20" coveredstatements="3" conditionals="4" coveredconditionals="0" methods="15" coveredmethods="0"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="12" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="26" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
+        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="6" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
       </file>
     </package>
   </project>
