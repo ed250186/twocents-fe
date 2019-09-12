@@ -57,6 +57,17 @@ describe('HomeScreen', () => {
       const mappedProps = mapStateToProps(mockState)
       expect(mappedProps).toEqual(expected)
     })
+
+    it('loggedIn should have a state of loggedIn', () => {
+      const mockState = {
+        loggedIn: 'loggedIn'
+      }
+      const expected = {
+        loggedIn: 'loggedIn'
+      }
+      const mappedProps = mapStateToProps(mockState)
+      expect(mappedProps).toEqual(expected)
+    })
   })
   
 });
