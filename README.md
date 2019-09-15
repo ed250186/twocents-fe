@@ -6,6 +6,17 @@ An app for doing something with your recommendations, TwoCents was created to he
 
 TwoCents Backend can be found [here](https://github.com/m-mrcr/twocents-be)
 
+## Installation
+
+- ```git clone https://github.com/emilydittmer/twocents-fe.git```
+
+- ```cd``` into the directory
+
+- run ```npm install```
+
+- Download Expo to view it on an iOS simulator. Installation instructions can be found [here](https://expo.io/learn)
+- Run ```npm start```
+
 ## Technologies Used
 ### Front-End
 - React-Native
@@ -24,18 +35,6 @@ TwoCents Backend can be found [here](https://github.com/m-mrcr/twocents-be)
 - Yelp API
 - Google OAuth
 - Sequelize
-
-## Installation
-
-- ```git clone https://github.com/emilydittmer/twocents-fe.git```
-
-- ```cd``` into the directory
-
-- run ```npm install```
-
-- Download Expo to view it on an iOS simulator. Installation instructions can be found [here](https://expo.io/learn)
-- Run ```npm start```
-
 
 ## Screenshots
 ### Login Screen
@@ -66,7 +65,7 @@ TwoCents Backend can be found [here](https://github.com/m-mrcr/twocents-be)
 <img src="https://github.com/emilydittmer/twocents-fe/blob/master/src/images/IMG_1461.PNG" alt="User Screen"
 	width="250" />
 
-### WireFrames
+## WireFrames
 
 ### Home Screen With Recommendations
 <img src="https://github.com/emilydittmer/twocents-fe/blob/master/src/images/WireFrame-HomeScreen.png" alt="Home Screen With Recommendations"
